@@ -3,9 +3,9 @@
   "logo": {
     // "source": "~/dotfiles/.config/fastfetch/logos/hyprland.png",
     "source": "~/.config/omarchy/branding/about.txt",
-    // "color": {
-    //   "1": "green"
-    // },
+    "color": {
+      "1": "green"
+    },
     // "type": "file",
     // "height": 25,
     "padding": {
