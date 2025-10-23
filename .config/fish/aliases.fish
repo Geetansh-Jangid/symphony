@@ -94,6 +94,7 @@ alias folders='du -h --max-depth=1'
 # Git aliases
 alias gits='git status'
 alias ghs='streaker vyrx-dev'
+abbr -a ghp 'gh repo create --public $(basename "$PWD") --source=. --description="desc" --push'
 
 # Snapper
 abbr -a slsr 'sudo snapper -c root list'
