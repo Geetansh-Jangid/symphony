@@ -7,18 +7,19 @@
   // "width": 1268,
   // "margin": "2px 6px 0 4",
   "modules-left": [
+    "custom/arch",
     "hyprland/workspaces",
-    // "hyprland/window",
     "mpris",
   ],
   "modules-center": [
-    "custom/arch",
+    "hyprland/window",
     "clock",
     "idle_inhibitor",
     "custom/screenrecording-indicator"
   ],
   "modules-right": [
     "mpd",
+    "custom/uptime",
     "group/tray-expander",
     "backlight",
     "bluetooth",
@@ -58,37 +59,44 @@
     //   "5": []
     // }
   },
-  // "hyprland/window": {
-  //   "format": "{title} - {class}",
-  //   "rewrite": {
-  //     " - ": "", // if no window is focused, a single dash is displayed, this removes it
-  //     "(.*?) - Chromium - chromium": " $1",
-  //     "(.*) - Obsidian - .* - obsidian": " $1",
-  //     "(.*nvim)...(.*)": " $2",
-  //     "(.*code) - (.*)": "󰨞 $1",
-  //     "^.*btop( .*|$)": "󰧨 BTOP $1",
-  //     "^.*cmatrix( .*|$)": "󰘨 MATRIX $1",
-  //     "(.*) - Spotify": " $1",
-  //     "(.*) - com.mitchellh.ghostty": "󰊠 $1",
-  //     "(.*) - Alacritty": "  $1",
-  //     "(.*) - kitty": "  $1",
-  //     "(.*) - BeeperTexts": "󰻞  $1",
-  //     "(.*Discord)...(.*).. (.*)": " $2",
-  //     "(.*) - org.gnome.Nautilus": "󰣆 $1",
-  //     // "OBS *. - (.*) - com.obsproject.Studio": "  $1", // not yet functional
-  //     // "nvim (.*) - com.mitchellh.ghostty": "  $1", // not being captured
-  //   }
-  // },
+  "hyprland/window": {
+    "format": "{title} - {class}",
+    "rewrite": {
+      " - ": "", // if no window is focused, a single dash is displayed, this removes it
+      "(.*?) - Chromium - chromium": " ",
+      "(.*) - Obsidian - .* - obsidian": " ",
+      "(.*nvim)...(.*)": " ",
+      "(.*code) - (.*)": " 󰨞",
+      "^.*btop( .*|$)": " 󰧨",
+      "^.*cmatrix( .*|$)": " 󰘨",
+      "(.*) - Spotify": " ",
+      "(.*) - com.mitchellh.ghostty": " 󰊠",
+      "(.*) - Alacritty": " ",
+      // "(.*) - kitty": " ",
+      "(.*) - kitty": "  $1",
+      "(.*) - BeeperTexts": " 󰻞",
+      "(.*Discord)...(.*).. (.*)": " ",
+      "(.*) - org.gnome.Nautilus": " 󰣆",
+      // "OBS *. - (.*) - com.obsproject.Studio": "  $1", // not yet functional
+      // "nvim (.*) - com.mitchellh.ghostty": "  $1", // not being captured
+    }
+  },
   "backlight": {
     "device": "intel_backlight",
     "format": "{icon}", //{percent}%
     "format-icons": [
-      "🌑",
-      "🌘",
-      "🌗",
-      "🌖",
-      "🌕"
-    ]
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "󰃠"
+    ],
+    "scroll-step": 10,
+    "on-click": "~/.config/waybar/change-theme.sh"
   },
   "cpu": {
     "interval": 2,
@@ -103,7 +111,6 @@
     "format": "{:L%A %H:%M}",
     "format-alt": "{:L%d %B W%V %Y}",
     "tooltip": false,
-    "on-click-right": "omarchy-cmd-tzupdate"
   },
   "idle_inhibitor": {
     "format": "{icon}",
@@ -129,13 +136,14 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click": "kitty -e impala"
+    "on-click": "kitty -e --class=impala impala"
   },
   "battery": {
     "format": "{icon} {capacity}%",
-    "format-discharging": "{icon}",
+    "format-discharging": "{icon} {capacity}%",
     "format-charging": "{icon}",
     "format-plugged": "",
+    "on-click": "~/Scripts/power.sh",
     "format-icons": {
       "charging": [
         "󰢜",
@@ -166,7 +174,6 @@
     "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
     "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
     "interval": 5,
-    "on-click": "btop",
     "states": {
       "warning": 20,
       "critical": 10
@@ -180,7 +187,7 @@
     "on-click": "blueberry"
   },
   "pulseaudio": {
-    "format": "{icon} {volume}%",
+    "format": "{icon}",
     "on-click": "kitty --class=Wiremix -e wiremix",
     "on-click-right": "pamixer -t",
     "tooltip-format": "Playing at {volume}%",
@@ -220,7 +227,7 @@
     "spacing": 12
   },
   "mpris": {
-    "format": "{player_icon} {artist} - {title}",
+    "format": " {player_icon} {artist} - {title}",
     "format-paused": "{status_icon} <i>{artist} - {title}</i>",
     "player-icons": {
       "default": "🎵",
@@ -244,7 +251,7 @@
     "on-click": "mpc toggle",
     "on-click-right": "mpc next",
     "on-click-middle": "mpc prev",
-    "on-scroll-up": "mpc next",
-    "on-scroll-down": "mpc prev"
+    // "on-scroll-up": "mpc next",
+    // "on-scroll-down": "mpc prev"
   }
 }

@@ -1,40 +1,38 @@
 @import "../omarchy/themes/aether/waybar.css";
 
-
 * {
-  /* background-color: @background; */
   background-color: transparent;
   color: @foreground;
-
   border: none;
-  border-radius: 0px;
+  border-radius: 0;
   font-family: 'CaskaydiaMono Nerd Font Propo';
-  font-size: 12px;
+  font-size: 13px;
 }
 
-tooltip {
-  opacity: 0.9;
+/* tooltip { */
+/*   background: rgba(15, 15, 15, 0.95); */
+/*   border: 1px solid rgba(255, 255, 255, 0.08); */
+/*   border-radius: 4px; */
+/*   padding: 6px 10px; */
+/* } */
+
+menu {
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 4px;
+}
+
+menu menuitem:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 window#waybar {
-  /* background-color: transparent; */
-
-  background: rgba(30, 30, 30, 0.5);
-  /* or any color with alpha < 1 */
-}
-
-.modules-left {
-  margin-left: 8px;
-}
-
-.modules-right {
-  margin-right: 8px;
+  background: rgba(16, 16, 16, 0.75);
 }
 
 .modules-center {
   border-radius: 0;
-  /* border-left: 1px solid alpha(@foreground, 0.2); */
-  /* border-right: 1px solid alpha(@foreground, 0.2); */
   padding: 0 80px;
 }
 
@@ -47,18 +45,29 @@ window#waybar {
 }
 
 #workspaces button.active {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
-  /* border-bottom: 2px solid rgba(255, 255, 255, 0.8); */
-  font-weight: 700;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
 }
 
 #workspaces button.empty {
   opacity: 0.5;
 }
 
-#hyprland-window,
+#workspaces button:hover {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+#mpd {
+  margin-right: 5px;
+  font-weight: 600;
+}
+
+#mpris {
+  margin-left: 5px;
+  font-weight: 600;
+}
+
 #tray,
 #cpu,
 #memory,
@@ -66,21 +75,25 @@ window#waybar {
 #network,
 #bluetooth,
 #pulseaudio,
+#custom-arch,
 #backlight,
+#window,
 #custom-screenrecording-indicator,
-
 #custom-expand-icon {
-  margin-right: 7px;
+  margin-right: 8px;
+  padding: 0 2px;
+  font-weight: 600;
 }
 
-tooltip {
-  padding: 0.5px;
+#clock {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0 3px;
 }
 
-
-#clock,
 #idle_inhibitor {
   margin-left: 8.75px;
+  font-size: 11px;
 }
 
 .hidden {
@@ -89,14 +102,16 @@ tooltip {
 
 #custom-screenrecording-indicator {
   min-width: 12px;
+  margin-top: 2px;
   margin-left: 8.75px;
-  font-size: 10px;
+  font-size: 13px;
+}
+
+#custom-arch {
+  margin-left: 4.75px;
+  font-size: 15px;
 }
 
 #custom-screenrecording-indicator.active {
   color: #a55555;
-}
-
-#window {
-  margin: 8.75px;
 }

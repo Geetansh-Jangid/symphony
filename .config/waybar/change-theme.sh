@@ -25,7 +25,7 @@ echo "$INDEX" >"$STATE_FILE"
 CURRENT_WALLPAPER="${WALLPAPERS[$INDEX]}"
 
 notify-send -i "$CURRENT_WALLPAPER" "Theme changed" "Wallpaper has been updated."
-swww img "$CURRENT_WALLPAPER" --transition-type=wave --transition-fps 120 --transition-pos 40,2120 --transition-duration=1
+swww img "$CURRENT_WALLPAPER" --transition-type=random --transition-fps=60 --transition-duration=1
 # SWWW_PARAMS="--transition-fps 60 --transition-type=any --transition-duration=1"
 wal -i "$CURRENT_WALLPAPER"
 pywalfox update
