@@ -11,7 +11,7 @@ function M.chill()
       if vim.v.count > 0 then
         count = 0
       end
-      if count >= 10 and vim.bo.buftype ~= "nofile" then
+      if count >= 15 and vim.bo.buftype ~= "nofile" then
         ok = pcall(vim.notify, "Chill Amit!", vim.log.levels.WARN, {
           icon = "🤠",
           id = "chill",
