@@ -1,1 +1,0 @@
-/home/vyrx/.config/omarchy/themes/aether/neovim.lua

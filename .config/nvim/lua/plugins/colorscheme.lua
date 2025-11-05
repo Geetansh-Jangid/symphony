@@ -8,7 +8,7 @@ return {
     lazy = true,
     priority = 1000,
     opts = {
-      transparent = true,
+      -- transparent = true,
     },
   },
   -- Kanagawa
@@ -17,7 +17,7 @@ return {
     lazy = true,
     priority = 1000,
     opts = {
-      transparent = true,
+      -- transparent = true,
       theme = "wave",
     },
   },
@@ -48,7 +48,7 @@ return {
     lazy = true,
     priority = 1000,
     opts = {
-      transparent_background = true,
+      -- transparent_background = true,
     },
   },
   -- Tokyo Night
@@ -58,7 +58,7 @@ return {
     priority = 1000,
     opts = {
       style = "night",
-      transparent = true,
+      -- transparent = true,
     },
   },
   -- Vague
@@ -67,7 +67,7 @@ return {
     lazy = true,
     priority = 1000,
     opts = {
-      transparent = true,
+      -- transparent = true,
     },
   },
   -- Pixel
@@ -83,29 +83,8 @@ return {
     priority = 1000,
     opts = {},
   },
-
-  {
-    "ribru17/bamboo.nvim",
-    lazy = true,
-    priority = 1000,
-  },
   {
     "sainnhe/everforest",
-    lazy = true,
-    priority = 1000,
-  },
-  {
-    "tahayvr/matteblack.nvim",
-    lazy = true,
-    priority = 1000,
-  },
-  {
-    "loctvl842/monokai-pro.nvim",
-    lazy = true,
-    priority = 1000,
-  },
-  {
-    "shaunsingh/nord.nvim",
     lazy = true,
     priority = 1000,
   },
@@ -147,10 +126,10 @@ return {
   -- },
 
   -- Set the active theme
-  -- {
-  --   "LazyVim/LazyVim",
-  --   opts = {
-  --     colorscheme = "vague", -- Change the Themes
-  --   },
-  -- },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "vague", -- Change the Themes
+    },
+  },
 }

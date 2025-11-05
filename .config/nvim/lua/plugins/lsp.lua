@@ -135,32 +135,21 @@ return {
       setup = {},
     },
   },
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   opts = function()
-  --     local keys = require("lazyvim.plugins.lsp.keymaps").get()
-  --     vim.list_extend(keys, {
-  --       {
-  --         "gd",
-  --         function()
-  --           -- DO NOT RESUSE WINDOW
-  --           require("telescope.builtin").lsp_definitions({ reuse_win = false })
-  --         end,
-  --         desc = "Goto Definition",
-  --         has = "definition",
-  --       },
-  --     })
-  --   end,
-  -- },
   {
     "neovim/nvim-lspconfig",
     opts = {
       keys = {
         {
           "gd",
+          -- function()
+          --   -- DO NOT REUSE WINDOW
+          --   require("telescope.builtin").lsp_definitions({ reuse_win = false })
+          -- end,
           function()
-            -- DO NOT REUSE WINDOW
-            require("telescope.builtin").lsp_definitions({ reuse_win = false })
+            require("telescope.builtin").lsp_definitions({
+              jump_type = "vsplit", -- or "vsplit" for vertical split
+              reuse_win = false,
+            })
           end,
           desc = "Goto Definition",
           has = "definition",

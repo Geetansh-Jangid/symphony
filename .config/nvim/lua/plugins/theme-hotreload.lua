@@ -5,16 +5,16 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      local transparency_file = vim.fn.stdpath("config") .. "/lua/plugins/transparency.lua"
+      local transparency_file = vim.fn.stdpath("config") .. "~/.config/nvim/lua/plugins/transparency.lua"
 
       vim.api.nvim_create_autocmd("User", {
         pattern = "LazyReload",
         callback = function()
           -- Unload the theme module
-          package.loaded["plugins.theme"] = nil
+          package.loaded["plugins.colorscheme"] = nil
 
           vim.schedule(function()
-            local ok, theme_spec = pcall(require, "plugins.theme")
+            local ok, theme_spec = pcall(require, "plugins.colorscheme")
             if not ok then
               return
             end
