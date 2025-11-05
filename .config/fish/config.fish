@@ -7,6 +7,9 @@ export EDITOR="nvim"
 export SUDO_EDITOR="$EDITOR"
 export VISUAL="nvim"
 
+export MANPAGER="nvim  +Man!"
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'" # man using bat
+
 # Choose any one binds settings
 # fish_vi_key_bindings
 fish_default_key_bindings
@@ -19,3 +22,4 @@ fish_add_path /home/vyrx/.spicetify
 
 # Created by `pipx` on 2025-10-25 19:31:32
 set PATH $PATH /home/vyrx/.local/bin
+# export PATH=/home/vyrx/.local/bin/:~/.npm-global/bin:$PATH
