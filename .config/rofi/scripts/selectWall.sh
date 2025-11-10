@@ -41,25 +41,29 @@ for wallpaper in "${wallpapers[@]}"; do
     swww img "$wallpaper" $SWWW_PARAMS #-o  "$focused_monitor"
 
     # Apply pywal color scheme
-    # wal -i "$wallpaper"
-    matugen image "$wallpaper"
+    matugen image "$wallpaper" -m dark
+    wal -i "$wallpaper"
 
     # Update pywal integrations
     pywalfox update
     pywal-spicetify text
-    killall -SIGUSR1 kitty
 
     # Reload everything instantly
     hyprctl reload 2>/dev/null
     restart-app.sh waybar 2>/dev/null
     restart-app.sh swayosd-server 2>/dev/null
     makoctl reload 2>/dev/null
+    killall -SIGUSR1 swaync
     killall -SIGUSR1 kitty
-    # pkill -SIGUSR1 kitty 2>/dev/null
     pkill -SIGUSR1 alacritty 2>/dev/null
     pkill -SIGUSR2 btop 2>/dev/null
     ghostty +reload-config 2>/dev/null
     killall -SIGUSR2 ghostty
+    pgrep -x nautilus >/dev/null && (
+      pkill -x nautilus
+      nautilus &>/dev/null &
+      disown
+    )
 
     if [[ -f ~/.config/alacritty/alacritty.toml ]]; then
       touch ~/.config/alacritty/alacritty.toml

@@ -23,6 +23,8 @@ declare -A online_music=(
   ["YT - Starboy Vibes🎶"]="https://youtu.be/fykM0vDDUnU?si=bnfSyV-LTxVfSyhU"
   ["YT - Jazz Lounge🎶"]="https://youtu.be/kJl319t76z8?si=ny03bA2GHDRwXW5-"
   ["YT - Friends S1📺"]="https://youtube.com/playlist?list=PLnS-KSZtIXlH8YNow_rTIflrX6ZEF1uNd&si=Y-0aWZSaBJ4peNfu"
+  ["YT - Hindi Cover Songs🎶"]="https://youtube.com/playlist?list=PLjqy7NBQvw8wnorOYEom-tBnd1wtiveQZ&si=hVjVxPXF5Bl8zH8l"
+
 )
 # Populate local_music array with files from music directory and subdirectories
 populate_local_music() {

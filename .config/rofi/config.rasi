@@ -19,7 +19,7 @@ configuration {
     selected: #ffffff22;
     active: #ffffff11;
     urgent: #ff5555aa;
-    border-colour: #ffffff22;
+    border-colour: #1e1e1e;
     separatorcolor: transparent;
     background-color: transparent;
     text-color: @foreground;
@@ -31,7 +31,7 @@ window {
     anchor: center;
     fullscreen: false;
     width: 480px;
-    border-radius: 12px;
+    border-radius: 0px;
     cursor: "default";
     background-color: @background;
 }
@@ -41,7 +41,7 @@ mainbox {
     spacing: 0px;
     margin: 0px;
     padding: 20px;
-    border-radius: 12px;
+    border-radius: 0px;
     background-color: #000000bb;
     children: [ "inputbar", "listview" ];
 }
@@ -94,7 +94,7 @@ element {
     spacing: 10px;
     margin: 0px;
     padding: 10px 12px;
-    border-radius: 6px;
+    border-radius: 0px;
     background-color: transparent;
     text-color: @foreground;
     cursor: pointer;
