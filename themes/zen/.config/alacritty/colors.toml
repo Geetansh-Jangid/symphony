@@ -1,29 +1,30 @@
-# Vague for Alacritty
-# Upstream: https://github.com/vague-theme/vague-alacritty/blob/main/vague.toml
+# Symphony by vyrx
+# Theme: Zen
+# https://github.com/vyrx-dev
 
 [colors.primary]
-background = '#000000'
-foreground = '#cdcdcd'
+background = '#0f0f0f'
+foreground = '#e8e8ed'
 
 [colors.normal]
-black = '#252530'
-red = '#d8647e'
-green = '#7fa563'
-yellow = '#f3be7c'
-blue = '#6e94b2'
-magenta = '#bb9dbd'
-cyan = '#aeaed1'
-white = '#cdcdcd'
+black = '#1c1c1e'
+red = '#5c5c5e'
+green = '#98989a'
+yellow = '#7a7a7c'
+blue = '#6c6c6e'
+magenta = '#86868a'
+cyan = '#a8a8ac'
+white = '#d1d1d6'
 
 [colors.bright]
-black = '#606079'
-red = '#e08398'
-green = '#99b782'
-yellow = '#f5cb96'
-blue = '#8ba9c1'
-magenta = '#c9b1ca'
-cyan = '#bebeda'
-white = '#d7d7d7'
+black = '#48484a'
+red = '#6e6e70'
+green = '#aeaeb0'
+yellow = '#8e8e90'
+blue = '#828284'
+magenta = '#9c9ca0'
+cyan = '#bebec2'
+white = '#f5f5f7'
 
 [colors.hints.start]
 foreground = "CellBackground"
@@ -34,9 +35,9 @@ foreground = "CellBackground"
 background = "CellForeground"
 
 [colors.search.matches]
-foreground = "CellBackground"
-background = "CellForeground"
+foreground = '#0f0f0f'
+background = '#bebec2'
 
 [colors.search.focused_match]
-foreground = "CellBackground"
-background = '#f3be7c'
+foreground = '#0f0f0f'
+background = '#f5f5f7'
