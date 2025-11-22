@@ -16,16 +16,15 @@
 
 **Core Applications**
 
-- [ ] Spicetify
 - [x] Rofi
 - [x] RMPC
 - [x] Yazi
 - [x] Btop
-- [ ] Starship
+- [x] Starship
 - [x] GTK
 - [ ] SwayNC
 - [x] Cava
-- [ ] Hypr borders
+- [x] Hypr borders
 - [x] Waybar
 
 **Terminals**
@@ -39,6 +38,7 @@
 - [x] Firefox
 - [x] Vesktop
 - [x] Obsidian
+- [ ] Spicetify
 
 ---
 
@@ -78,4 +78,4 @@
 
 ---
 
-*Last updated: November 21, 2025 at 11:47 PM*
+*Last updated: November 22, 2025 at 06:58 AM*
