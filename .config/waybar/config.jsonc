@@ -8,6 +8,7 @@
     "cpu",
     "memory",
     "disk"
+    // "mpris"
     // "hyprland/window"
   ],
   "modules-center": [
@@ -16,7 +17,6 @@
   ],
   "modules-right": [
     // "mpd",
-    // "mpris",
     "group/tray-expander",
     // "temperature",
     "network",
@@ -234,12 +234,12 @@
     "status-icons": {
       "paused": "⏸"
     },
-    "max-length": 30
+    "max-length": 55
   },
   "mpd": {
     "format": "{stateIcon} {title} - {artist}",
     "format-stopped": "",
-    "max-length": 40,
+    "max-length": 50,
     "state-icons": {
       "paused": "⏸",
       "playing": ""
