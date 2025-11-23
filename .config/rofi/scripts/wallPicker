@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Note: This only changes wallpaper, not theme colors
+
 # Wallpaper picker for waybar - swww only (no pywal, no reloads)
 WALLPAPER_DIR="$HOME/Wallpapers/"
 SWWW_PARAMS="--transition-fps 60 --transition-type=any --transition-duration=1"
@@ -39,6 +41,13 @@ for wallpaper in "${wallpapers[@]}"; do
   if [[ "$(basename "$wallpaper")" == "$choice" ]]; then
     # Apply wallpaper with swww
     swww img -o "$focused_monitor" "$wallpaper" $SWWW_PARAMS
+
+    # Update wallpaper symlink to track current wallpaper
+    mkdir -p "$HOME/.config/symphony/current"
+    CURRENT_WALLPAPER=$(swww query 2>/dev/null | grep "currently displaying" | head -1 | sed 's/.*image: //')
+    if [ -n "$CURRENT_WALLPAPER" ]; then
+      ln -sf "$CURRENT_WALLPAPER" "$HOME/.config/symphony/current/wallpaper"
+    fi
 
     # Send notification
     notify-send -i "$wallpaper" "Wallpaper Changed" "$(basename "$wallpaper")"

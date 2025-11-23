@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Power menu options
+options="Shutdown\nReboot\nSuspend\nLogout"
+
+# Show menu and get selection
+choice=$(echo -e "$options" | rofi -dmenu -p "Power Menu" -config "$HOME/.config/rofi/custom-rofi/config-powermenu.rasi")
+
+# Execute based on selection
+case "$choice" in
+"Shutdown")
+  poweroff
+  ;;
+"Reboot")
+  reboot
+  ;;
+"Suspend")
+  systemctl suspend
+  ;;
+"Logout")
+  hyprctl dispatch exit || loginctl terminate-user "$USER"
+  ;;
+esac

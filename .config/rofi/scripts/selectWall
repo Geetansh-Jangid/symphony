@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Check if custom theme is active
+CURRENT_THEME=$(cat ~/.config/symphony/.current-theme 2>/dev/null || echo "matugen")
+if [[ "$CURRENT_THEME" != "matugen" ]]; then
+    notify-send "Theme Locked" "Using custom theme: $CURRENT_THEME\nUse switch-theme.sh to change themes"
+    exit 0
+fi
+
+
 # Wallpaper picker with pywal integration
 WALLPAPER_DIR="$HOME/Wallpapers/"
 SWWW_PARAMS="--transition-fps 60 --transition-type=random --transition-duration=1"
@@ -44,20 +52,27 @@ for wallpaper in "${wallpapers[@]}"; do
     matugen image "$wallpaper" -m dark #matugen
     wal -i "$wallpaper"                #pywal16
 
+    # Update Symphony integrations after matugen generates new colors
+    "$HOME/dotfiles/theme-scripts/core/update-cava-colors.sh" matugen
+    "$HOME/dotfiles/theme-scripts/core/update-rmpc-theme.sh" matugen
+    "$HOME/dotfiles/theme-scripts/core/fix-symlinks.sh"
+
+    # Update Obsidian theme
+    bash "$HOME/dotfiles/theme-scripts/core/update-obsidian-theme.sh"
+
     # Update pywal integrations
     pywalfox update
     pywal-spicetify text
 
     # Reload everything instantly
-    hyprctl reload 2>/dev/null
-    restart-app.sh waybar 2>/dev/null
-    restart-app.sh swayosd-server 2>/dev/null
-    makoctl reload 2>/dev/null
+    hyprctl reload
+    restart-app waybar
+    restart-app swayosd-server
     killall -SIGUSR1 swaync
     killall -SIGUSR1 kitty
-    pkill -SIGUSR1 alacritty 2>/dev/null
-    pkill -SIGUSR2 btop 2>/dev/null
-    ghostty +reload-config 2>/dev/null
+    pkill -SIGUSR1 alacritty
+    pkill -SIGUSR2 btop
+    ghostty +reload-config
     killall -SIGUSR2 ghostty
 
     pgrep -x nautilus >/dev/null && (

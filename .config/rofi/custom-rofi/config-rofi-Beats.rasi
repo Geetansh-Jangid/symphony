@@ -26,7 +26,7 @@ listview {
   lines: 7;
   fixed-height: false;
   margin: 10px;
-  scrollbar: true;
+  scrollbar: false;
   spacing: 6px;
   cycle: true;
 }

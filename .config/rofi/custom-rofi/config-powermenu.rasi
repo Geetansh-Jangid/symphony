@@ -1,0 +1,25 @@
+@import "~/.config/rofi/config.rasi"
+
+/* Main config for power menu */
+
+/* ---- Window ---- */
+window{
+  width:12%;
+}
+
+/* ---- Mainbox ---- */
+mainbox{
+  children:
+    ["listview"];
+}
+
+/* ---- Listview ---- */
+listview{
+  lines:5;
+  spacing:1px;
+}
+
+/* ---- Element ---- */
+// element-text{
+//   horizontal-align:0.5;
+// }
