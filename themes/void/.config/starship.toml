@@ -1,38 +1,28 @@
-# Symphony by vyrx
-# Theme: Void
-# https://github.com/vyrx-dev
-
 add_newline = false
 command_timeout = 60
-format = """\
-$os \
-$directory \
-$git_branch$git_status\
-$line_break\
-$character\
-"""
+format = """$os $directory $git_branch$git_status$line_break$character"""
 
-# right_format = """\
-# $time\
-# """
+# right_format = """# $time# """
 
 palette = "colors"
 
 [palettes.colors]
-color1 = '#BB9AF7'
-color2 = '#382952'
-color3 = '#C3AAF0'
-color4 = '#6B578F'
-color5 = '#B49AE6'
-color6 = '#05010C'
-color7 = '#0f0a16'
-color8 = '#A6B8FF'
-color9 = '#C2B8FF'
+mustard = '#af8700'
+color1 = '#A6B8FF'        # directory path (cyan accent)
+color2 = '#05010C'          # unused
+color3 = '#FFFFFF'          # unused
+color4 = '#05010C'          # unused
+color5 = '#05010C'          # unused
+color6 = '#6B578F'        # vicmd symbol (muted gray)
+color7 = '#05010C'          # unused
+color8 = '#A6B8FF'        # os symbol, success character (primary)
+color9 = '#B49AE6'     # git branch (secondary accent)
+error = '#F07178'          # error character
 
 [directory]
-style = "fg:#BB9AF7 bold"
+style = "fg:color1 bold"
 read_only = " 󰌾"
-read_only_style = "fg:#FF8A95"
+read_only_style = "fg:#ea6962"
 truncation_length = 0
 truncate_to_repo = false
 format = "[$path]($style)[$read_only]($read_only_style)"
@@ -42,23 +32,23 @@ format = "[$path]($style)[$read_only]($read_only_style)"
 '~/Testing-repo' = 'work-project'
 
 [character]
-success_symbol = '[❯](fg:#BB9AF7 bold)'
-error_symbol = '[❯](fg:#FF8A95 bold)'
-vicmd_symbol = '[❮](fg:#6B578F bold)'
+success_symbol = '[❯](fg:color8 bold)'
+error_symbol = '[❯](fg:error bold)'
+vicmd_symbol = '[❮](fg:color6 bold)'
 
 [git_branch]
-style = "fg:#C2B8FF bold"
+style = "fg:color9 bold"
 format = '[$symbol$branch]($style) '
 
 [git_status]
 ahead = '⇡${count}'
 behind = '⇣${count}'
 diverged = '⇕⇡${ahead_count}⇣${behind_count}'
-format = '[[($all_status$ahead_behind )](fg:#FF8A95)]($style)'
+format = '[[($all_status$ahead_behind )](fg:#ea6962)]($style)'
 
 [os]
 format = "[$symbol]($style)"
-style = "fg:#BB9AF7 bold"
+style = "fg:color8 bold"
 disabled = false
 
 [os.symbols]

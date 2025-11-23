@@ -1,29 +1,29 @@
 {
-    "checksum": "ea48466c0e9c84b20df70a16c95e9948",
-    "wallpaper": "/home/vyrx/Wallpapers/nord/a_logo_with_white_text.png",
+    "checksum": "e115be230c8cb4c6a031e6406efaf2f6",
+    "wallpaper": "/home/vyrx/Wallpapers/forest-4.jpg",
     "alpha": "100",
 
     "special": {
-        "background": "#101826",
-        "foreground": "#c3c5c8",
-        "cursor": "#c3c5c8"
+        "background": "#0c1d0c",
+        "foreground": "#c2c6c2",
+        "cursor": "#c2c6c2"
     },
     "colors": {
-        "color0": "#101826",
-        "color1": "#9EA76C",
-        "color2": "#346895",
-        "color3": "#717C8A",
-        "color4": "#6582A7",
-        "color5": "#9CA3A2",
-        "color6": "#D2C6A2",
-        "color7": "#c3c5c8",
-        "color8": "#5f6674",
-        "color9": "#9EA76C",
-        "color10": "#346895",
-        "color11": "#717C8A",
-        "color12": "#6582A7",
-        "color13": "#9CA3A2",
-        "color14": "#D2C6A2",
-        "color15": "#c3c5c8"
+        "color0": "#0c1d0c",
+        "color1": "#423D36",
+        "color2": "#3F403A",
+        "color3": "#5F4725",
+        "color4": "#48433C",
+        "color5": "#554C45",
+        "color6": "#665952",
+        "color7": "#c2c6c2",
+        "color8": "#5c705c",
+        "color9": "#423D36",
+        "color10": "#3F403A",
+        "color11": "#5F4725",
+        "color12": "#48433C",
+        "color13": "#554C45",
+        "color14": "#665952",
+        "color15": "#c2c6c2"
     }
 }

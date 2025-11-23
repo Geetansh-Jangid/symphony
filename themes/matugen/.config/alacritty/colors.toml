@@ -1,52 +1,48 @@
-# Symphony by vyrx
-# Theme: Matugen (Dynamic)
-# https://github.com/vyrx-dev
-
 [colors.primary]
-background = '#111418'
-foreground = '#e1e2e8'
+background = '#11140f'
+foreground = '#e1e4da'
  
 [colors.cursor]
-text = '#e1e2e8'
-cursor = '#c3c6cf' 
+text = '#e1e4da'
+cursor = '#c3c8bc' 
  
 [colors.vi_mode_cursor]
-text = '#111418'
-cursor = '#a2c9fd' 
+text = '#11140f'
+cursor = '#a7d394' 
  
 [colors.search.matches]
-foreground = '#43474e' 
-background = '#d8bde4' 
+foreground = '#43483f' 
+background = '#a0cfd1' 
  
 [colors.search.focused_match]
-foreground = '#43474e' 
-background = '#a2c9fd' 
+foreground = '#43483f' 
+background = '#a7d394' 
  
 [colors.footer_bar]
-foreground = '#43474e' 
-background = '#e1e2e8' 
+foreground = '#43483f' 
+background = '#e1e4da' 
  
 [colors.hints.start]
-foreground = '#43474e' 
-background = '#bbc7db' 
+foreground = '#43483f' 
+background = '#bccbb1' 
  
 [colors.hints.end]
-foreground = '#43474e' 
-background = '#bbc7db' 
+foreground = '#43483f' 
+background = '#bccbb1' 
  
 [colors.selection]
-text = '#111418'
-background = '#a2c9fd'
+text = '#11140f'
+background = '#a7d394'
  
  
 [colors.normal]
 black = '#181818' 
 red = '#ffb4ab' 
-green = '#a2c9fd' 
-yellow = '#38608f' 
-blue = '#a2c9fd' 
-magenta = '#d8bde4' 
-cyan = '#bbc7db' 
+green = '#a7d394' 
+yellow = '#416834' 
+blue = '#a7d394' 
+magenta = '#a0cfd1' 
+cyan = '#bccbb1' 
 white = '#BAC2DE' 
  
  

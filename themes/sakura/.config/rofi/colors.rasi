@@ -1,23 +1,17 @@
-/*
- * Symphony
- * Author: vyrx
- * Theme: Sakura
- */
-
 * {
-    /* Primary accent color (cyan/blue) */
+    /* Primary accent color (using cyan/green as primary) */
     primary: #E8C099;
     primary-container: #D9A56C;
     on-primary: #0d0509;
-    on-primary-container: #f0eaed;
+    on-primary-container: #ffffff;
     
-    /* Secondary accent (magenta) */
+    /* Secondary accent */
     secondary: #D1B399;
     secondary-container: #4a3c45;
     on-secondary: #0d0509;
     on-secondary-container: #f0eaed;
     
-    /* Surface backgrounds - using bg and gray for depth */
+    /* Surface backgrounds (progressively lighter) */
     surface: #0d0509;
     surface-dim: #0d0509;
     surface-bright: #4a3c45;
@@ -25,7 +19,7 @@
     surface-container-low: #0d0509;
     surface-container: #4a3c45;
     surface-container-high: #4a3c45;
-    surface-container-highest: #f0eaed;
+    surface-container-highest: #4a3c45;
     
     /* Text colors */
     on-surface: #ffffff;

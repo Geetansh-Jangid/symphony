@@ -1,40 +1,39 @@
-/* Symphony by vyrx / Theme: Forest / https://github.com/vyrx-dev */
 * {
-    /* Primary accent color (soft forest green) */
-    primary: #4a7a4a;
-    primary-container: #3a5a3a;
+    /* Primary accent color (using cyan/green as primary) */
+    primary: #9ed8dd;
+    primary-container: #62e2a4;
     on-primary: #020802;
     on-primary-container: #fdfffd;
     
-    /* Secondary accent (muted jade) */
-    secondary: #62e2a4;
-    secondary-container: #0a150a;
+    /* Secondary accent */
+    secondary: #e0eb7a;
+    secondary-container: #518a51;
     on-secondary: #020802;
     on-secondary-container: #fdfffd;
     
-    /* Surface backgrounds - forest theme */
+    /* Surface backgrounds (progressively lighter) */
     surface: #020802;
     surface-dim: #020802;
-    surface-bright: #0a150a;
+    surface-bright: #518a51;
     surface-container-lowest: #020802;
     surface-container-low: #020802;
-    surface-container: #0a150a;
-    surface-container-high: #1a2820;
-    surface-container-highest: #bff2ab;
+    surface-container: #518a51;
+    surface-container-high: #518a51;
+    surface-container-highest: #518a51;
     
     /* Text colors */
-    on-surface: #bff2ab;
-    on-surface-variant: #9ed8dd;
+    on-surface: #fdfffd;
+    on-surface-variant: #bff2ab;
     
     /* Outline/border colors */
-    outline: #0a150a;
-    outline-variant: #1a2820;
+    outline: #518a51;
+    outline-variant: #518a51;
     
     /* Error colors */
     error: #bf5a7c;
     on-error: #020802;
     
     /* Inverse colors */
-    inverse-surface: #bff2ab;
+    inverse-surface: #fdfffd;
     inverse-on-surface: #020802;
 }

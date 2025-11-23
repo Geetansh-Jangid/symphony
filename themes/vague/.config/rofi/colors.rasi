@@ -1,38 +1,33 @@
-/* Symphony by vyrx
- * Theme: Vague
- * https://github.com/vyrx-dev
- */
-
 * {
-    /* Primary accent color (cyan) */
+    /* Primary accent color (using cyan/green as primary) */
     primary: #aeaed1;
-    primary-container: #606079;
+    primary-container: #6e94b2;
     on-primary: #252530;
-    on-primary-container: #cdcdcd;
+    on-primary-container: #d7d7d7;
     
-    /* Secondary accent (magenta) */
+    /* Secondary accent */
     secondary: #bb9dbd;
     secondary-container: #606079;
     on-secondary: #252530;
     on-secondary-container: #cdcdcd;
     
-    /* Surface backgrounds */
-    surface: #121314;
-    surface-dim: #121314;
+    /* Surface backgrounds (progressively lighter) */
+    surface: #252530;
+    surface-dim: #252530;
     surface-bright: #606079;
-    surface-container-lowest: #121314;
-    surface-container-low: #121314;
-    surface-container: #252530;
-    surface-container-high: #252530;
+    surface-container-lowest: #252530;
+    surface-container-low: #252530;
+    surface-container: #606079;
+    surface-container-high: #606079;
     surface-container-highest: #606079;
     
     /* Text colors */
-    on-surface: #cdcdcd;
+    on-surface: #d7d7d7;
     on-surface-variant: #cdcdcd;
     
     /* Outline/border colors */
     outline: #606079;
-    outline-variant: #252530;
+    outline-variant: #606079;
     
     /* Error colors */
     error: #d8647e;
@@ -40,5 +35,5 @@
     
     /* Inverse colors */
     inverse-surface: #cdcdcd;
-    inverse-on-surface: #252530;
+    inverse-on-surface: #121314;
 }

@@ -1,7 +1,3 @@
-# Symphony
-# Author: vyrx
-# Theme: Sakura
-
 ## Configuration file for CAVA.
 # Remove the ; to change parameters.
 
@@ -236,15 +232,16 @@
 
 [color]
 
-background = '#080305'
+background = '#0d0509'
 gradient = 1
-gradient_count = 6
-gradient_color_1 = '#ce4a59'
-gradient_color_2 = '#ba8d6b'
-gradient_color_3 = '#d8807f'
-gradient_color_4 = '#bf8a56'
-gradient_color_5 = '#cea680'
-gradient_color_6 = '#e1b891'
+gradient_count = 7
+gradient_color_1 = '#4a3c45'
+gradient_color_2 = '#F29B9A'
+gradient_color_3 = '#FFB5B4'
+gradient_color_4 = '#D4A882'
+gradient_color_5 = '#E6BA94'
+gradient_color_6 = '#E8C099'
+gradient_color_7 = '#FBD2AB'
 # Gradient mode, only hex defined colors are supported,
 # background must also be defined in hex or remain commented out. 1 = on, 0 = off.
 # You can define as many as 8 different colors. They range from bottom to top of screen

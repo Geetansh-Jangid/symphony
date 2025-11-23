@@ -1,7 +1,3 @@
-// Symphony
-// Author: vyrx
-// Theme: Sakura
-
 #![enable(implicit_some)]
 #![enable(unwrap_newtypes)]
 #![enable(unwrap_variant_newtypes)]
@@ -13,11 +9,11 @@
     text_color: "#f0eaed",
     tab_bar: (
         enabled: true,
-        active_style: (fg: "#f0eaed", bg: "#000000", modifiers: "Bold"),
+        active_style: (fg: "#f0eaed", bg: "#0d0509", modifiers: "Bold"),
         inactive_style: (fg: "#4a3c45", modifiers: ""),
     ),
     highlighted_item_style: (fg: "#D9A56C", modifiers: "Bold"),
-    current_item_style: (fg: "#000000", bg: "#D9A56C", modifiers: "Bold"),
+    current_item_style: (fg: "#0d0509", bg: "#D9A56C", modifiers: "Bold"),
     borders_style: (fg: "#4a3c45", modifiers: ""),
     highlight_border_style: (fg: "#D9A56C"),
     symbols: (song: "󰝚 ", dir: " ", marker: "* ", ellipsis: "..."),
@@ -36,7 +32,7 @@
     song_table_format: [
         (
             prop: (kind: Property(Title), style: (fg: "#f0eaed"),
-                highlighted_item_style: (fg: "#000000", modifiers: "Bold"),
+                highlighted_item_style: (fg: "#0d0509", modifiers: "Bold"),
                 default: (kind: Property(Filename), style: (fg: "#4a3c45"),)
             ),
             width: "70%",

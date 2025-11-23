@@ -1,44 +1,39 @@
-/* Symphony by vyrx
- * Theme: Void
- * https://github.com/vyrx-dev
- */
-
 * {
-    /* Primary accent color */
-    primary: #BB9AF7;
-    primary-container: #C2B8FF;
-    on-primary: #05010C;
-    on-primary-container: #05010C;
+    /* Primary accent color (using cyan/green as primary) */
+    primary: #A6B8FF;
+    primary-container: #BB9AF7;
+    on-primary: #382952;
+    on-primary-container: #C3AAF0;
     
     /* Secondary accent */
     secondary: #B49AE6;
     secondary-container: #6B578F;
-    on-secondary: #05010C;
+    on-secondary: #382952;
     on-secondary-container: #FFFFFF;
     
-    /* Surface backgrounds */
-    surface: #0f0a16;
-    surface-dim: #05010C;
-    surface-bright: #1a0f24;
-    surface-container-lowest: #05010C;
-    surface-container-low: #0f0a16;
-    surface-container: #1a0f24;
-    surface-container-high: #382952;
-    surface-container-highest: #4a3766;
+    /* Surface backgrounds (progressively lighter) */
+    surface: #382952;
+    surface-dim: #382952;
+    surface-bright: #6B578F;
+    surface-container-lowest: #382952;
+    surface-container-low: #382952;
+    surface-container: #6B578F;
+    surface-container-high: #6B578F;
+    surface-container-highest: #6B578F;
     
     /* Text colors */
-    on-surface: #DECCFF;
-    on-surface-variant: #C3AAF0;
+    on-surface: #C3AAF0;
+    on-surface-variant: #DECCFF;
     
     /* Outline/border colors */
     outline: #6B578F;
-    outline-variant: #382952;
+    outline-variant: #6B578F;
     
     /* Error colors */
-    error: #FF8A95;
-    on-error: #05010C;
+    error: #F07178;
+    on-error: #382952;
     
     /* Inverse colors */
-    inverse-surface: #DECCFF;
+    inverse-surface: #FFFFFF;
     inverse-on-surface: #05010C;
 }
