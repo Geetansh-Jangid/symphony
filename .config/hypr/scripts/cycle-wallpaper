@@ -24,4 +24,8 @@ fi
 
 WALLPAPER="$WALLDIR/${WALLS[$INDEX]}"
 swww img "$WALLPAPER" --transition-fps 60 --transition-type center --transition-duration 1
+
+# Update wallpaper symlink to track current wallpaper
+ln -sf "$WALLPAPER" "$HOME/dotfiles/themes/$THEME/wallpaper"
+
 notify-send -i "$WALLPAPER" "$(($INDEX + 1))/$TOTAL" "${WALLS[$INDEX]}"

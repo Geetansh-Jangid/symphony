@@ -120,10 +120,10 @@ return {
   },
 
   -- Set the active theme
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "aether", -- Change the Themes
-    },
-  },
+  -- {
+  --   "LazyVim/LazyVim",
+  --   opts = {
+  --     colorscheme = "gruvbox-material", -- Change the Themes
+  --   },
+  -- },
 }

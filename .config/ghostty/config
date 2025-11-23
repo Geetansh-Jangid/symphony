@@ -1,5 +1,7 @@
 # config-file = ?"~/.cache/wal/ghostty.conf"
-config-file = ?"~/.config/ghostty/themes/Matugen"
+# config-file = ?"~/.config/ghostty/themes/Matugen"
+config-file = ?"~/.config/ghostty/themes/colors"
+config-file = ?"~/.config/ghostty/themes/overrides"
 # theme = "Matugen"  
 
 theme = Matugen
@@ -7,7 +9,7 @@ theme = Matugen
 # config-file = ?"~/.config/omarchy/themes/aether/ghostty.conf"
 
 # Font
-font-family = "CaskaydiaCove Nerd Font Mono"
+font-family = "JetBrainsMono Nerd Font"
 font-style = Regular
 font-size = 13
 

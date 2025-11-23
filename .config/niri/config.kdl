@@ -108,6 +108,9 @@ input {
     // position focus-monitor-left
 }
 
+output "eDP-1" {
+    position x=0 y=0
+}
 output "HDMI-A-1" {
   scale 1
 position x=1920 y=0
@@ -374,14 +377,18 @@ binds {
     Mod+RETURN hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+E hotkey-overlay-title="open file manager" { spawn "nautilus"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "hyprlock"; }
+    Super+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "hyprlock"; }
     Super+B hotkey-overlay-title="zen-browser" { spawn "zen-browser"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
-    Ctrl+Mod+Space allow-when-locked=true hotkey-overlay-title=null { spawn-sh "~/.config/rofi/scripts/selectWall.sh"; }
+    Ctrl+Alt+Space allow-when-locked=true hotkey-overlay-title=null { spawn-sh "~/.config/rofi/scripts/wallPicker"; }
+    Mod+Space allow-when-locked=true hotkey-overlay-title=null { spawn-sh "rofi -show drun"; }
+    Mod+Alt+right allow-when-locked=true hotkey-overlay-title=null { spawn-sh "~/.config/hypr/scripts/cycle-wallpaper"; }
+    Mod+Ctrl+Shift+space allow-when-locked=true hotkey-overlay-title=null { spawn-sh "~/dotfiles/theme-scripts/core/switch-theme.sh"; }
+
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.

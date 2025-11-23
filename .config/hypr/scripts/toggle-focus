@@ -11,7 +11,7 @@ if [[ $gaps == "0" ]]; then
   hyprctl keyword decoration:rounding 15
   hyprctl keyword animations:enabled true
 
-  sed -i 's/background_opacity 1$/background_opacity 0.8/g' ~/.config/kitty/kitty.conf
+  sed -i 's/background_opacity 1$/background_opacity 0.65/g' ~/.config/kitty/kitty.conf
   pkill -SIGUSR1 -x kitty
   restart-app waybar
 
@@ -23,7 +23,7 @@ else
   hyprctl keyword decoration:rounding 0
   hyprctl keyword animations:enabled false
 
-  sed -i 's/background_opacity 0\.8$/background_opacity 1/g' ~/.config/kitty/kitty.conf
+  sed -i 's/background_opacity 0\.65$/background_opacity 1/g' ~/.config/kitty/kitty.conf
   pkill -SIGUSR1 -x kitty
   pkill waybar
 

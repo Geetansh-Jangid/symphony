@@ -105,11 +105,11 @@
 /* Selected chat/friend text */
 .selected_f5eb4b,
 .selected_f6f816 .link_d8bfb3 {
-  color: var(--text-0) !important;
+  color: var(--bg-4) !important;
   background: var(--accent-3) !important;
 }
 
 .selected_f6f816 .link_d8bfb3 * {
-  color: var(--text-0) !important;
-  fill: var(--text-0) !important;
+  color: var(--bg-4) !important;
+  fill: var(--bg-4) !important;
 }

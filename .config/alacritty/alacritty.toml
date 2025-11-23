@@ -1,6 +1,6 @@
 general.import = [
-  # "~/.config/alacritty/Themes/solarized_osaka.toml",
-  "~/.cache/wal/colors-alacritty.toml"
+   "colors.toml",
+   "overrides.toml"
 ]
 
 [env]
@@ -20,9 +20,3 @@ italic = { family = "CaskaydiaMono Nerd Font" }
 size = 12
 
 # previous "font = CaskaydiaCove Nerd Font"
-
-[keyboard]
-bindings = [
-{ key = "F11", action = "ToggleFullscreen" }
-]
-

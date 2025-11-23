@@ -1,7 +1,14 @@
-/*
-* Css Colors
-* Generated with Matugen
-*/
+/**
+ * ════════════════════════════════════════════════════════
+ *   Symphony by https://github.com/vyrx-dev
+ *   Theme: Matugen
+ *   Generated with Matugen
+ * ════════════════════════════════════════════════════════
+ */
+
+    @define-color waybar_accent rgba({{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}}, 0.10);
+    @define-color waybar_accent_fg @on_background;
+
 <* for name, value in colors *>
     @define-color {{name}} {{value.default.hex}};
 <* endfor *>

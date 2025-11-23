@@ -3,10 +3,10 @@
 # └─────────┘
 
 #General
+alias ls='eza -1 --icons=auto'
+alias l='eza -lh --icons=auto'
 abbr -a c clear
-abbr -a l 'eza -lh --icons=auto'
 abbr -a la 'ls -a'
-abbr -a ls 'eza -1 --icons=auto'
 abbr -a ll 'eza -lha --icons=auto --sort=name --group-directories-first'
 abbr -a ld 'eza -lhD --icons=auto'
 abbr -a lt 'eza --icons=auto --tree'
