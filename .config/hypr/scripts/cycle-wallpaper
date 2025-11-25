@@ -23,7 +23,12 @@ else
 fi
 
 WALLPAPER="$WALLDIR/${WALLS[$INDEX]}"
-swww img "$WALLPAPER" --transition-fps 60 --transition-type center --transition-duration 1
+swww img "$WALLPAPER" \
+  --transition-type right \
+  --transition-pos top-right \
+  --transition-fps 120 \
+  --transition-duration 1 \
+  --transition-bezier 0.25,0.1,0.25,1.0
 
 # Update wallpaper symlink to track current wallpaper
 ln -sf "$WALLPAPER" "$HOME/dotfiles/themes/$THEME/wallpaper"
