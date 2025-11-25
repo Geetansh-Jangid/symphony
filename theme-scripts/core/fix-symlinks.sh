@@ -125,7 +125,6 @@ killall -SIGUSR1 kitty
 pkill -SIGUSR1 alacritty
 pkill -SIGUSR2 btop
 pkill -SIGUSR2 waybar
-swaync-client -rs
 
 # Update Firefox pywalfox colors
 pywalfox update >/dev/null 2>&1 &

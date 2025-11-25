@@ -207,7 +207,6 @@ if [ "$SELECTED" = "matugen" ] || [ -d "$THEMES_DIR/$SELECTED" ]; then
   pkill -SIGUSR1 alacritty
   pkill -SIGUSR2 btop
   pkill -SIGUSR2 waybar
-  swaync-client -rs
   ghostty +reload-config
   killall -SIGUSR2 ghostty
 
