@@ -1,6 +1,7 @@
 -- Fuzzy finder (fzf gets the job done, never needed telescope)
 return {
   "ibhagwan/fzf-lua",
+  cmd = "FzfLua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
     -- Quick access
