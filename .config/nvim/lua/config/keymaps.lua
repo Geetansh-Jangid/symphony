@@ -125,3 +125,11 @@ end, { desc = "Go to next diagnostic message" })
 
 set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+
+-- Format buffer manually
+set("n", "<leader>lf", function()
+  vim.lsp.buf.format()
+end, { desc = "Format current buffer" })
+
+-- Toggle autoformat on save
+set("n", "<leader>tf", ":ToggleAutoformat<CR>", { desc = "Toggle format on save" })

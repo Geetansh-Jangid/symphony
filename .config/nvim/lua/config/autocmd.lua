@@ -30,11 +30,18 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+
+
 -- format on save using efm langserver and configured formatters
 local lsp_fmt_group = vim.api.nvim_create_augroup("FormatOnSaveGroup", {})
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = lsp_fmt_group,
   callback = function()
+    -- Check if autoformat is enabled
+    if not vim.g.autoformat_enabled then
+      return
+    end
+
     local efm = vim.lsp.get_clients { name = "efm" }
     if vim.tbl_isempty(efm) then
       return
@@ -42,6 +49,17 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     vim.lsp.buf.format { name = "efm", async = true }
   end,
 })
+
+-- Toggle autoformat command
+vim.g.autoformat_enabled = true --Global toggle for autoformatting (default: enabled)
+vim.api.nvim_create_user_command("ToggleAutoformat", function()
+  vim.g.autoformat_enabled = not vim.g.autoformat_enabled
+  if vim.g.autoformat_enabled then
+    vim.notify("Autoformat enabled", vim.log.levels.INFO)
+  else
+    vim.notify("Autoformat disabled", vim.log.levels.WARN)
+  end
+end, {})
 
 -- on attach function shortcuts
 local lsp_on_attach_group = vim.api.nvim_create_augroup("LspMappings", {})
