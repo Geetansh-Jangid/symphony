@@ -1,19 +1,26 @@
 return {
+  -- Text objects
   { "echasnovski/mini.ai", version = "*", opts = {} },
+
+  -- auto pairs for brackets/quotes
   { "echasnovski/mini.pairs", opts = {} },
+
+  -- minimal notification UI
   {
     "echasnovski/mini.notify",
     opts = {
       window = {
         winblend = 0, -- transparency
-        max_width_share = 0.8,
+        max_width_share = 0.5,
       },
       lsp_progress = {
         enable = false, -- disable LSP progress (handled by fidget.nvim)
-        duration_last = 1000,
+        duration_last = 10000,
       },
     },
   },
+
+  -- fast surround editing
   {
     "echasnovski/mini.surround",
     opts = {
@@ -28,6 +35,8 @@ return {
       n_lines = 30,
     },
   },
+
+  -- better file explorer than oil (facts 🙂)
   {
     "nvim-mini/mini.files",
     version = false,

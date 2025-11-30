@@ -6,6 +6,16 @@ return {
     config = true,
   },
 
+  -- split and join
+  {
+    "Wansmer/treesj",
+    keys = { "<space>m" },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("treesj").setup {}
+    end,
+  },
+
   -- copilot
   {
     "zbirenbaum/copilot.lua",
