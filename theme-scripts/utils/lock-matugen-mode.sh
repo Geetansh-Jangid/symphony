@@ -17,7 +17,7 @@ LOCK_CODE='
 # Check if custom theme is active
 CURRENT_THEME=$(cat ~/.config/symphony/.current-theme 2>/dev/null || echo "matugen")
 if [[ "$CURRENT_THEME" != "matugen" ]]; then
-    notify-send "Theme Locked" "Using custom theme: $CURRENT_THEME\\nSwitch to Matugen to change themes"
+    notify-send "Theme Locked" "Using custom theme: $CURRENT_THEME\\nSwitch to Matugen to use this"
     exit 0
 fi
 '
