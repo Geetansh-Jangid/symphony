@@ -6,7 +6,7 @@
  * ════════════════════════════════════════════════════════
  */
 
-    @define-color waybar_accent rgba(167, 211, 148, 0.10);
+    @define-color waybar_accent rgba(167, 211, 148, 0.25);
     @define-color waybar_accent_fg @on_background;
 
 

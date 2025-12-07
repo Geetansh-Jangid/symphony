@@ -1,11 +1,13 @@
 *.bak
-*colors.css
+# *colors.css
+.config/waybar/colors.css
 
 .config/tmux/plugins
 
 # Fish local config
 .config/fish/fish_variables
 .config/fish/install.log
+.config/fish/api.fish
 
 # Typora - ignore everything except custom themes
 .config/Typora/*

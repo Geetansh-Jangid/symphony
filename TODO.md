@@ -47,7 +47,7 @@
 - [x] Theme switcher
 - [x] fish aliases → abbr
 - [ ] Media conversion scripts
-- [x] Theme installer script
+- [ ] Theme installer script (almost done)
 - [ ] Full installation script
 - [ ] Optimize switching performance
 
@@ -74,9 +74,9 @@
 ## 📚 Documentation
 
 - [ ] Main README
-- [x] Themes & Scripts README
+- [x] Themes & Scripts README (need some minor changes)
 - [ ] Symphony Website
 
 ---
 
-*Last updated: November 23, 2025 at 05:49 AM*
+*Last updated: December 7, 2025 at 07:16 AM*

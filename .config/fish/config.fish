@@ -1,5 +1,6 @@
 source ~/dotfiles/.config/fish/aliases.fish
 source ~/dotfiles/.config/fish/env.fish
+source ~/dotfiles/.config/fish/api.fish
 
 ### EXPORT ###
 set -g fish_greeting ""
