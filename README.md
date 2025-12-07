@@ -173,7 +173,7 @@ sudo pacman -S hyprland xdg-desktop-portal-hyprland
 
 # System utilities
 sudo pacman -S waybar rofi swaync swww hypridle hyprlock wlogout
-sudo pacman -S polkit-gnome cliphist wl-clipboard
+sudo pacman -S polkit-gnome cliphist wl-clipboard 
 
 # Terminal & Shell
 sudo pacman -S kitty alacritty fish starship tmux
@@ -182,7 +182,7 @@ sudo pacman -S kitty alacritty fish starship tmux
 sudo pacman -S neovim lazygit btop yazi
 
 # Audio & Media
-sudo pacman -S pipewire wireplumber pavucontrol mpd mpc ncmpcpp
+sudo pacman -S pipewire wireplumber pavucontrol mpd mpc ncmpcpp mpv-mpris mpd-mpris
 
 # Theming
 sudo pacman -S matugen pywalfox
