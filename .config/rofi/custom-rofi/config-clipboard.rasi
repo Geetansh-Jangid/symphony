@@ -4,6 +4,7 @@
 
 /* ---- Window ---- */
 window {
+  // width: inherit;
   width: 600px;
 }
 
@@ -41,7 +42,7 @@ element {
 }
 
 element-icon {
-  size: 44px;
+  size: 40px;
 }
 
 element-text {
