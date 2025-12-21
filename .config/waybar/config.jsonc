@@ -38,7 +38,7 @@
   "custom/logo": {
     "format": "󰊠",
     "tooltip": false,
-    "on-click": "~/dotfiles/theme-scripts/symphony switch",
+    "on-click": "~/dotfiles/install/themes/symphony switch",
     "on-click-right": "~/.config/hypr/scripts/cycle-wallpaper next"
   },
   "hyprland/workspaces": {

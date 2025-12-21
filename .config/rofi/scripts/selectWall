@@ -51,7 +51,7 @@ for wallpaper in "${wallpapers[@]}"; do
 		matugen image "$wallpaper" -m dark
 
 		# Update Symphony with new colors and reload apps
-		"$HOME/dotfiles/theme-scripts/symphony" reload
+		"$HOME/dotfiles/install/themes/symphony" reload
 
 		# Reload apps not handled by symphony
 		restart-app swayosd-server
