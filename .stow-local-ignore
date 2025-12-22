@@ -36,3 +36,6 @@ install
 # Hidden apps are copied, not symlinked
 \.local/share/applications/hidden
 
+# Desktop entries are handled by installer, not stow
+\.local/share/applications
+

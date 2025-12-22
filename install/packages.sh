@@ -157,6 +157,7 @@ packages=(
 
     matugen-bin                 # colorscheme from wallpaper
     nwg-look                    # GTK settings
+    adw-gtk-theme               # GTK3 theme matching libadwaita
     bibata-cursor-theme-bin     # cursor theme
 
     # ╭───────────────────────────────────────────────────────────────────────╮

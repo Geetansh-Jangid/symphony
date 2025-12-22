@@ -1,9 +1,31 @@
 #!/bin/bash
-# Desktop apps setup (webapps, hidden entries)
+# Desktop apps setup (webapps, browser overrides, hidden entries)
 
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 APPS_DIR="$DOTFILES/.local/share/applications"
 TARGET_DIR="$HOME/.local/share/applications"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Browser Overrides (only install if browser is present)
+# ─────────────────────────────────────────────────────────────────────────────
+
+setup_browser_overrides() {
+    mkdir -p "$TARGET_DIR"
+    
+    # brave-browser override
+    if command -v brave &>/dev/null && [[ -f "$APPS_DIR/brave-browser.desktop" ]]; then
+        cp "$APPS_DIR/brave-browser.desktop" "$TARGET_DIR/"
+        ok "brave-browser override"
+    fi
+    
+    # chromium override
+    if command -v chromium &>/dev/null && [[ -f "$APPS_DIR/chromium.desktop" ]]; then
+        cp "$APPS_DIR/chromium.desktop" "$TARGET_DIR/"
+        ok "chromium override"
+    fi
+    
+    return 0
+}
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Web Apps (personal, users choose which ones)
@@ -12,7 +34,7 @@ TARGET_DIR="$HOME/.local/share/applications"
 ask_webapps() {
     command -v gum &>/dev/null || return 0
 
-    # Collect webapp names (skip browser config overrides)
+    # Collect webapp names (skip browser overrides and system entries)
     local webapps=()
     for file in "$APPS_DIR"/*.desktop; do
         [[ -f "$file" ]] || continue
@@ -37,7 +59,6 @@ ask_webapps() {
     for app in $selected; do
         local src="$APPS_DIR/$app.desktop"
         local dst="$TARGET_DIR/$app.desktop"
-        # Skip if already linked or same file
         [[ "$src" -ef "$dst" ]] && { ok "$app (linked)"; continue; }
         cp "$src" "$dst"
         ok "$app"
@@ -58,7 +79,6 @@ setup_hidden() {
     for file in "$APPS_DIR/hidden"/*.desktop; do
         [[ -f "$file" ]] || continue
         local dst="$TARGET_DIR/$(basename "$file")"
-        # Skip if already linked or same file
         [[ "$file" -ef "$dst" ]] && continue
         cp "$file" "$dst"
         count=$((count + 1))
@@ -72,6 +92,7 @@ setup_hidden() {
 # Run
 # ─────────────────────────────────────────────────────────────────────────────
 
+setup_browser_overrides
 ask_webapps
 setup_hidden
 

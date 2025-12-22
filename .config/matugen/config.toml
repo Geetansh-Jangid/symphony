@@ -1,25 +1,25 @@
 [config]
 
 [templates.hyprland]
-input_path = '/home/vyrx/.config/matugen/templates/hyprland-colors.conf'
+input_path = '~/.config/matugen/templates/hyprland-colors.conf'
 # output_path = '~/.config/hypr/colors.conf'
 output_path = '~/dotfiles/themes/dynamic/.config/hypr/colors.conf'
 post_hook = 'hyprctl reload'
 
 [templates.kitty]
-input_path = '/home/vyrx/.config/matugen/templates/kitty-colors.conf'
+input_path = '~/.config/matugen/templates/kitty-colors.conf'
 # output_path = '~/.config/kitty/colors.conf'
 output_path = '~/dotfiles/themes/dynamic/.config/kitty/colors.conf'
 post_hook = 'pkill -SIGUSR1 kitty'
 
 
 [templates.btop]
-input_path = '/home/vyrx/.config/matugen/templates/btop.theme'
+input_path = '~/.config/matugen/templates/btop.theme'
 # output_path = '~/.config/btop/themes/matugen.theme'
 output_path = '~/dotfiles/themes/dynamic/.config/btop/themes/current.theme'
 
 [templates.yazi]
-input_path = '/home/vyrx/.config/matugen/templates/yazi-theme.toml'
+input_path = '~/.config/matugen/templates/yazi-theme.toml'
 output_path = '~/dotfiles/themes/dynamic/.config/yazi/theme.toml'
 
 [templates.cava]
