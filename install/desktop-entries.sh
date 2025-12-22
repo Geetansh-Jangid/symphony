@@ -12,14 +12,14 @@ step "Setting up desktop entries"
 
 mkdir -p "$TARGET_DIR"
 
-# Browser overrides
+# Browser overrides (use --remove-destination in case stow already symlinked them)
 if command -v brave &>/dev/null && [[ -f "$APPS_DIR/brave-browser.desktop" ]]; then
-    cp "$APPS_DIR/brave-browser.desktop" "$TARGET_DIR/"
+    cp --remove-destination "$APPS_DIR/brave-browser.desktop" "$TARGET_DIR/"
     ok "Brave override"
 fi
 
 if command -v chromium &>/dev/null && [[ -f "$APPS_DIR/chromium.desktop" ]]; then
-    cp "$APPS_DIR/chromium.desktop" "$TARGET_DIR/"
+    cp --remove-destination "$APPS_DIR/chromium.desktop" "$TARGET_DIR/"
     ok "Chromium override"
 fi
 
@@ -50,7 +50,7 @@ if command -v gum &>/dev/null; then
         if gum confirm "Install web apps?"; then
             selected=$(printf '%s\n' "${webapps[@]}" | gum choose --no-limit --height 15) || true
             for app in $selected; do
-                [[ -n "$app" ]] && cp "$APPS_DIR/$app.desktop" "$TARGET_DIR/" && ok "$app"
+                [[ -n "$app" ]] && cp --remove-destination "$APPS_DIR/$app.desktop" "$TARGET_DIR/" && ok "$app"
             done
         fi
     fi
