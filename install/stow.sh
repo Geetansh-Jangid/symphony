@@ -14,7 +14,7 @@ fi
 
 # Handle conflicts by adopting existing files
 warn "Conflicts detected, adopting existing files"
-stow --adopt . 2>/dev/null
-git checkout . 2>/dev/null
-stow -R .
+stow --adopt . 2>/dev/null || true
+git checkout . 2>/dev/null || true
+stow -R . 2>/dev/null || { err "Stow failed"; return 1 2>/dev/null || exit 1; }
 ok "Dotfiles linked"

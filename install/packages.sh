@@ -287,6 +287,7 @@ install_packages() {
 
     [[ ${#official[@]} -gt 0 ]] && sudo pacman -S --needed --noconfirm "${official[@]}"
     [[ ${#from_aur[@]} -gt 0 ]] && $aur -S --needed --noconfirm "${from_aur[@]}"
+    return 0
 }
 
 ask_applications() {
