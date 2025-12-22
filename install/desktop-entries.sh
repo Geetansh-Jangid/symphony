@@ -10,13 +10,10 @@ TARGET_DIR="$HOME/.local/share/applications"
 
 step "Setting up desktop entries"
 
-# If stow symlinked the whole directory, user needs to fix manually
+# If stow symlinked the whole directory, remove it
 if [[ -L "$TARGET_DIR" ]]; then
-    warn "~/.local/share/applications is a symlink"
-    info "Run: ./uninstall.sh --desktop-entries"
-    info "Then re-run the installer"
-    true
-    return 0 2>/dev/null || exit 0
+    rm "$TARGET_DIR"
+    info "Removed stale symlink"
 fi
 
 mkdir -p "$TARGET_DIR"
