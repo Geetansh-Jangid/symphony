@@ -1,6 +1,12 @@
 #!/bin/bash
 
-export LIBVA_DRIVER_NAME=radeonsi
+# Auto-detect VA-API driver for hardware video acceleration
+if lspci | grep -qi "VGA.*AMD\|Radeon"; then
+    export LIBVA_DRIVER_NAME=radeonsi
+elif lspci | grep -qi "VGA.*Intel"; then
+    export LIBVA_DRIVER_NAME=iHD
+fi
+# NVIDIA uses nvidia-vaapi-driver if installed, no env var needed
 
 browser=$(xdg-settings get default-web-browser)
 
