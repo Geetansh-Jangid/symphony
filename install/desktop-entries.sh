@@ -10,7 +10,7 @@ TARGET_DIR="$HOME/.local/share/applications"
 # ─────────────────────────────────────────────────────────────────────────────
 
 ask_webapps() {
-    command -v gum &>/dev/null || return
+    command -v gum &>/dev/null || return 0
 
     # Collect webapp names (skip browser config overrides)
     local webapps=()
@@ -23,21 +23,22 @@ ask_webapps() {
         webapps+=("$name")
     done
 
-    [[ ${#webapps[@]} -eq 0 ]] && return
+    [[ ${#webapps[@]} -eq 0 ]] && return 0
 
     echo
-    gum confirm "Install web apps?" || return
+    gum confirm "Install web apps?" || return 0
 
     step "Select web apps"
     local selected=$(printf '%s\n' "${webapps[@]}" | gum choose --no-limit --height 15)
 
-    [[ -z "$selected" ]] && return
+    [[ -z "$selected" ]] && return 0
 
     mkdir -p "$TARGET_DIR"
     for app in $selected; do
         cp "$APPS_DIR/$app.desktop" "$TARGET_DIR/"
         ok "$app"
     done
+    return 0
 }
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -45,7 +46,7 @@ ask_webapps() {
 # ─────────────────────────────────────────────────────────────────────────────
 
 setup_hidden() {
-    [[ -d "$APPS_DIR/hidden" ]] || return
+    [[ -d "$APPS_DIR/hidden" ]] || return 0
 
     mkdir -p "$TARGET_DIR"
     local count=0
@@ -57,6 +58,7 @@ setup_hidden() {
     done
 
     [[ $count -gt 0 ]] && ok "Hidden $count apps from launcher"
+    return 0
 }
 
 # ─────────────────────────────────────────────────────────────────────────────
