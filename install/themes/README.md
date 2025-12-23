@@ -21,6 +21,8 @@ Uninstall:
 
 ## Themes
 
+<div align="center">
+
 <table>
 <tr>
 <td align="center"><img src="../../assets/void.png" width="400"/><br><b>Void</b></td>
@@ -43,6 +45,8 @@ Uninstall:
 <td align="center"><img src="../../assets/zen.png" width="400"/><br><b>Zen</b></td>
 </tr>
 </table>
+
+</div>
 
 <div align="center">
 
