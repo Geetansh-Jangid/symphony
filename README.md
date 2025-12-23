@@ -8,8 +8,7 @@
 <a href="#themes"><img src="https://img.shields.io/badge/Themes-f5a97f?style=for-the-badge&logoColor=1a1b26" alt="Themes"/></a>&ensp;
 <a href="install/themes/README.md"><img src="https://img.shields.io/badge/Symphony-f5c2e7?style=for-the-badge&logoColor=1a1b26" alt="Symphony"/></a>&ensp;
 <a href="#usage"><img src="https://img.shields.io/badge/Usage-7aa2f7?style=for-the-badge&logoColor=1a1b26" alt="Usage"/></a>&ensp;
-<a href="#keybindings"><img src="https://img.shields.io/badge/Keys-9ece6a?style=for-the-badge&logoColor=1a1b26" alt="Keybindings"/></a>&ensp;
-<a href="#components"><img src="https://img.shields.io/badge/Components-bb9af7?style=for-the-badge&logoColor=1a1b26" alt="Components"/></a>
+<a href="#keybindings"><img src="https://img.shields.io/badge/Keybindings-9ece6a?style=for-the-badge&logoColor=1a1b26" alt="Keybindings"/></a>
 
 [![Arch](https://img.shields.io/badge/Arch-1793D1?style=flat&logo=arch-linux&logoColor=white)](https://archlinux.org/)
 [![Hyprland](https://img.shields.io/badge/Hyprland-58E1FF?style=flat&logo=wayland&logoColor=white)](https://hyprland.org/)
