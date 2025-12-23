@@ -210,21 +210,12 @@ page_two() {
         print_musical
     fi
 
-    # Apply default theme
-    heading "Applying Theme"
-    local theme="sakura"
-    mkdir -p "$SYMPHONY_DIR"
-    echo "$theme" > "$SYMPHONY_DIR/.current-theme"
-
-    if [[ -x "$SCRIPT_DIR/symphony" ]]; then
-        "$SCRIPT_DIR/symphony" switch "$theme" && {
-            check_mark "Theme applied"
-            check_mark "Wallpaper set"
-            check_mark "Applications reloaded"
-        } || warn "Theme switch had issues (normal on first install)"
-    else
-        cross_mark "symphony not found"
-    fi
+    # First time setup notice
+    heading "Almost There!"
+    echo -e "  ${C_WHITE}After reboot, apply a theme:${C_RESET}"
+    echo
+    echo -e "  ${C_DIM}eg.${C_RESET} ${C_NOTE}symphony switch sakura${C_RESET}"
+    echo -e "  ${C_DIM}or${C_RESET}  ${C_NOTE}Super + Ctrl + Shift + Space${C_RESET}"
 
     divider
 
