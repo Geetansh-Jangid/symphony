@@ -21,8 +21,8 @@ skip=(
     pamixer playerctl inotify-tools wtype v4l-utils adw-gtk-theme
 )
 
-# Backed up during install
-backup_dirs=(.config/hypr .config/waybar .config/rofi .config/kitty .config/fish)
+# Backup location used by stow.sh
+BACKUP_DIR="$HOME/.dotfiles-backup"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Functions
@@ -48,15 +48,28 @@ do_unstow() {
 
 restore_backups() {
     step "Restoring backups"
+
+    [[ ! -d "$BACKUP_DIR" ]] && { info "No backups found"; return 0; }
+
+    # Find most recent backup (timestamped subdirectory)
+    local latest=$(find "$BACKUP_DIR" -maxdepth 1 -type d -name "20*" | sort -r | head -1)
+    [[ -z "$latest" ]] && latest="$BACKUP_DIR"
+
+    [[ ! -d "$latest/.config" ]] && { info "No configs to restore"; return 0; }
+
+    info "Restoring from: $latest"
     local n=0
-    for dir in "${backup_dirs[@]}"; do
-        [[ -d "$HOME/$dir.bak" ]] || continue
-        rm -rf "$HOME/$dir"
-        mv "$HOME/$dir.bak" "$HOME/$dir"
-        ok "$dir"
+
+    for item in "$latest/.config"/*; do
+        [[ -d "$item" ]] || continue
+        local name=$(basename "$item")
+        rm -rf "$HOME/.config/$name"
+        cp -r "$item" "$HOME/.config/$name"
+        ok ".config/$name"
         ((n++)) || true
     done
-    [[ $n -eq 0 ]] && info "No backups found"
+
+    [[ $n -eq 0 ]] && info "Nothing to restore"
     return 0
 }
 
@@ -178,7 +191,7 @@ echo
 warn "Symphony Uninstaller"
 echo
 echo "  - Remove symlinks"
-echo "  - Restore .bak configs"  
+echo "  - Restore backed up configs"  
 echo "  - Optionally remove packages"
 echo "  - Clean shell PATH"
 echo

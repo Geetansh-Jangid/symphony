@@ -153,4 +153,3 @@ step "Installing packages"
 setup_aur
 do_install "${packages[@]}"
 ask_applications
-true
