@@ -5,40 +5,43 @@
 #|/ /---+---------------------+/ /---|#
 
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-BACKUP_DIR="$HOME/.dotfiles-backup"
+BACKUP_DIR="$HOME/.dotfiles-backup/$(date +%Y%m%d_%H%M%S)"
 
 step "Linking dotfiles"
-
 cd "$DOTFILES"
 
-# Dry run to detect conflicts
-dry_run=$(stow -n -v . 2>&1)
-conflicts=$(echo "$dry_run" | grep "cannot stow" | sed -n 's/.*existing target \([^ ]*\).*/\1/p')
+# Use stow dry-run to find conflicts, back them up, then stow for real
+backup_conflicts() {
+    local dry_run conflicts=()
 
-if [[ -n "$conflicts" ]]; then
-    # Create backup directory
-    mkdir -p "$BACKUP_DIR"
-    
-    # Backup each conflicting file/directory
-    while IFS= read -r item; do
-        [[ -z "$item" ]] && continue
-        target="$HOME/$item"
-        if [[ -e "$target" && ! -L "$target" ]]; then
-            mkdir -p "$BACKUP_DIR/$(dirname "$item")"
-            mv "$target" "$BACKUP_DIR/$item"
-            info "Backed up: $item"
+    dry_run=$(stow -n -v . 2>&1)
+
+    # Parse: "over existing target .config/foo/bar since neither..."
+    while IFS= read -r line; do
+        if [[ "$line" == *"existing target"* ]]; then
+            local path=$(echo "$line" | sed -n 's/.*existing target \([^ ]*\) since.*/\1/p')
+            [[ -n "$path" ]] && conflicts+=("$path")
         fi
-    done <<< "$conflicts"
-    
+    done <<< "$dry_run"
+
+    [[ ${#conflicts[@]} -eq 0 ]] && return 0
+
+    mkdir -p "$BACKUP_DIR"
+    for item in "${conflicts[@]}"; do
+        local target="$HOME/$item"
+        [[ -e "$target" && ! -L "$target" ]] || continue
+        mkdir -p "$BACKUP_DIR/$(dirname "$item")"
+        mv "$target" "$BACKUP_DIR/$item"
+        info "Backed up: $item"
+    done
+
     info "Backups saved to: $BACKUP_DIR"
-fi
+}
 
-# Now stow for real
-output=$(stow -v . 2>&1)
+backup_conflicts
 
-if echo "$output" | grep -qE "cannot stow|All operations aborted|ERROR"; then
+if ! stow -v .; then
     err "Failed to link dotfiles"
-    echo "$output" | grep -v "^LINK:" | sed 's/^/  /'
     info "Fix conflicts and retry: cd ~/dotfiles && stow ."
     exit 1
 fi

@@ -62,7 +62,6 @@ if command -v gum &>/dev/null; then
     fi
 fi
 
-# Refresh
+# Refresh desktop database
 update-desktop-database "$TARGET_DIR" 2>/dev/null || true
 rm -f "$HOME/.cache/rofi"* 2>/dev/null || true
-true
