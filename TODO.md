@@ -1,15 +1,15 @@
 ```
-  ____                      _                         ___    ___  
- / ___| _   _ _ __ ___  ___| |__   ___  _ __  _   _  |__ \  / _ \ 
- \___ \| | | | '_ ` _ \/ __| '_ \ / _ \| '_ \| | | |   ) || | | |
-  ___) | |_| | | | | | \__ \ | | | (_) | | | | |_| |  / / | |_| |
- |____/ \__, |_| |_| |_|___/_| |_|\___/|_| |_|\__, | |_(_) \___/ 
-        |___/                                  |___/              
+  ____                        _                           _____   ___  
+ / ___| _   _ _ __ ___  _ __ | |__   ___  _ __  _   _    |___ /  / _ \ 
+ \___ \| | | | '_ ` _ \| '_ \| '_ \ / _ \| '_ \| | | |     |_ \ | | | |
+  ___) | |_| | | | | | | |_) | | | | (_) | | | | |_| |    ___) || |_| |
+ |____/ \__, |_| |_| |_| .__/|_| |_|\___/|_| |_|\__, |   |____(_)\___/ 
+        |___/          |_|                      |___/                  
 ```
 
-**Status**: Released  
-**Current**: [v2.1.0](https://github.com/vyrx-dev/dotfiles/releases/tag/v2.1.0)  
-**Previous**: [v2.0.0](https://github.com/vyrx-dev/dotfiles/releases/tag/v2.0.0)
+**Status**: In Development  
+**Current**: [v3.0.0](https://github.com/vyrx-dev/dotfiles/releases/tag/v3.0.0)  
+**Previous**: [v2.1.0](https://github.com/vyrx-dev/dotfiles/releases/tag/v2.1.0)
 
 ---
 
@@ -46,6 +46,7 @@
 - [x] New themes: espresso, kanagawa, nordic
 - [x] Terminal transparency toggle
 - [x] Dynamic app hiding
+- [x] Omarchy themes import (`symphony import`, `symphony tui`)
 - [ ] Optimize switching performance
 
 ---
