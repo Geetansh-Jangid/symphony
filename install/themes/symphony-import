@@ -188,7 +188,7 @@ EOF
     cat > "$dest/.config/waybar/colors.css" <<EOF
 @define-color waybar_accent rgba($(hex "$cyan" | sed 's/../0x& /g' | xargs printf '%d, %d, %d'), 0.20);
 @define-color waybar_accent_fg @on_background;
-@define-color on_background $fg;
+@define-color on_background $bwhite;
 @define-color surface_container $black;
 @define-color error $red;
 EOF
@@ -320,9 +320,54 @@ gradient_color_3 = '$cyan'
 gradient_color_4 = '$green'
 EOF
 
-    # ── wal ──
+    # ── wal (for pywalfox) ──
     cat > "$dest/.cache/wal/colors.json" <<EOF
-{"special":{"background":"$bg","foreground":"$fg","cursor":"$cyan"}}
+{
+    "wallpaper": "$dest/wallpaper",
+    "alpha": "100",
+    "special": {
+        "background": "$bg",
+        "foreground": "$fg",
+        "cursor": "$cyan"
+    },
+    "colors": {
+        "color0": "$black",
+        "color1": "$red",
+        "color2": "$green",
+        "color3": "$yellow",
+        "color4": "$blue",
+        "color5": "$magenta",
+        "color6": "$cyan",
+        "color7": "$white",
+        "color8": "$bblack",
+        "color9": "$bred",
+        "color10": "$bgreen",
+        "color11": "$byellow",
+        "color12": "$bblue",
+        "color13": "$bmagenta",
+        "color14": "$bcyan",
+        "color15": "$bwhite"
+    }
+}
+EOF
+
+    cat > "$dest/.cache/wal/colors" <<EOF
+$black
+$red
+$green
+$yellow
+$blue
+$magenta
+$cyan
+$white
+$bblack
+$bred
+$bgreen
+$byellow
+$bblue
+$bmagenta
+$bcyan
+$bwhite
 EOF
 
     # ── yazi ──
@@ -571,9 +616,8 @@ run_import() {
     
     write_configs "$name" "$dest" "$bg" "$fg" "${palette[@]}"
     
-    # use original configs if available
+    # use original theme configs if available
     [[ -f "$tmp/repo/btop.theme" ]] && cp "$tmp/repo/btop.theme" "$dest/.config/btop/themes/current.theme"
-    [[ -f "$tmp/repo/waybar.css" ]] && cp "$tmp/repo/waybar.css" "$dest/.config/waybar/colors.css"
     [[ -f "$tmp/repo/neovim.lua" ]] && cp "$tmp/repo/neovim.lua" "$dest/.config/nvim/theme.lua"
     
     ok "imported $name"
