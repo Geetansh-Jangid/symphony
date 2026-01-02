@@ -88,15 +88,12 @@ cmd_switch() {
 	local theme="$1"
 
 	if [[ -z "$theme" ]]; then
-		local themes
-		themes=$(list_themes)
-		if command -v rofi &>/dev/null; then
-			theme=$(echo "$themes" | rofi -dmenu -i -p "Theme" -config "$HOME/.config/rofi/config.rasi") || exit 0
-		elif command -v fzf &>/dev/null; then
-			theme=$(echo "$themes" | fzf --prompt="Theme: ") || exit 0
+		command -v rofi &>/dev/null || { err "rofi is required"; exit 1; }
+		local theme_picker="$HOME/.config/rofi/scripts/themePicker"
+		if [[ -x "$theme_picker" ]]; then
+			exec "$theme_picker"
 		else
-			err "Need rofi or fzf for menu"
-			exit 1
+			theme=$(list_themes | rofi -dmenu -i -p "Theme" -config "$HOME/.config/rofi/config.rasi") || exit 0
 		fi
 	fi
 
