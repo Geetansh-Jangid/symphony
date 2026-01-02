@@ -177,7 +177,8 @@ show_banner() {
     local padding=$(printf '%*s' "$pad" '')
     
     if command -v tte &>/dev/null; then
-        sed "s/^/$padding/" "$BRANDING/symphony.txt" | tte expand \
+        sed "s/^/$padding/" "$BRANDING/symphony.txt" | tte \
+            --frame-rate 120 expand \
             --movement-speed 0.5 \
             --expand-easing IN_OUT_QUART \
             --final-gradient-stops FFEB3B FFB74D FF8A80 F48FB1 EC407A \
