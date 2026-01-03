@@ -82,24 +82,26 @@ window#waybar {
 #mpris,
 #tray,
 #custom-screenrecording-indicator,
-#custom-idle-indicator {
+#custom-expand,
+#custom-idle-indicator,
+#custom-logo {
     padding: 0 5px;
     font-weight: 600;
 }
 
 #custom-screenrecording-indicator {
   min-width: 12px;
-  margin-top: 2px;
-  margin-left: 8.75px;
   font-size: 13px;
 }
 
 #custom-logo {
-  padding: 0 10px 0 6px;
-  margin-right: 4px;
-  font-size: 15px;
+  font-size: 12px;
 }
 
 #custom-screenrecording-indicator.active {
   color: #a55555;
+}
+
+#clock {
+  font-weight: 700;
 }

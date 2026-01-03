@@ -5,25 +5,39 @@
   "spacing": 0,
   "height": 28,
   "modules-left": [
-    "custom/logo",
     "hyprland/workspaces"
   ],
   "modules-center": [
     "mpris"
   ],
   "modules-right": [
+    "group/tray-drawer",
     "memory",
     "disk",
     "custom/screenrecording-indicator",
     "custom/idle-indicator",
     "network",
     "bluetooth",
+    "custom/logo",
     "backlight",
     "pulseaudio",
     "battery",
-    "clock",
-    "tray"
+    "clock"
   ],
+  "group/tray-drawer": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 200
+    },
+    "modules": [
+      "custom/expand",
+      "tray"
+    ]
+  },
+  "custom/expand": {
+    "format": "",
+    "tooltip": false
+  },
   "custom/screenrecording-indicator": {
     "on-click": "~/.config/hypr/scripts/screenrecord",
     "exec": "~/.config/waybar/scripts/indicator-record",
@@ -37,10 +51,11 @@
     "return-type": "json"
   },
   "custom/logo": {
-    "format": "󰊠",
+    "format": "",
+    // "format": "󰎆",  // music note alternate
     "tooltip": false,
-    "on-click": "~/dotfiles/install/themes/symphony switch",
-    "on-click-right": "~/.config/hypr/scripts/cycle-wallpaper next"
+    "on-click": "~/.config/rofi/scripts/rofibeats",
+    "on-click-right": "kitty -e nvim ~/.config/rofi/scripts/rofibeats"
   },
   "hyprland/workspaces": {
     "on-click": "activate",
@@ -84,13 +99,14 @@
     "format": "󰍛 {usage}%",
     "on-click": "kitty -e btop"
   },
-  "memory": {
-    "format": " {used:0.1f}gb",
+"memory": {
+   "format": " {used:0.1f}gb", 
     "interval": 2,
     "on-click": "kitty -e btop"
   },
   "clock": {
-    "format": "{:L%H:%M}",
+    "format": "{:%H:%M}",
+    // "format": "{:%I:%M %p}",  // 12-hour format
     "format-alt": "{:L%A %d %B}",
     "tooltip": false
   },
