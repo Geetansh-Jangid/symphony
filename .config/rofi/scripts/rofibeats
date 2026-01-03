@@ -64,7 +64,7 @@ play_shuffle() {
 }
 
 play_online() {
-  choice=$(printf "%s\n" "${!stations[@]}" | sort | rofi -i -dmenu -config "$rofi_dir/config-rofi-theme.rasi" -p "Online Music")
+  choice=$(printf "%s\n" "${!stations[@]}" | sort | rofi -i -dmenu -config "$rofi_dir/config-rofi-Beats.rasi" -p "Online Music")
   [[ -z "$choice" ]] && exit 0
 
   notify "$choice"
