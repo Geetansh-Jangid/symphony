@@ -1,0 +1,154 @@
+#!/bin/bash
+
+# Battery notification daemon for Hyprland
+# Monitors battery events and sends notifications for low/critical/full
+# and charger plug/unplug. Uses upower for event-driven monitoring.
+
+LOW=20
+CRITICAL=10
+DANGER=5
+FULL=100
+
+notified_low=false
+notified_critical=false
+notified_full=false
+last_status=""
+
+ICON_LOW="battery-caution"
+ICON_CRITICAL="battery-empty"
+ICON_DANGER="battery-empty"
+ICON_FULL="battery-full-charged"
+ICON_CHARGING="battery-good-charging"
+ICON_DISCHARGING="battery-good"
+
+get_battery() {
+  for bat in /sys/class/power_supply/BAT*; do
+    [[ -e "$bat" ]] && echo "$bat" && return 0
+  done
+  return 1
+}
+
+BATTERY=$(get_battery) || exit 0
+
+get_percentage() {
+  cat "$BATTERY/capacity" 2>/dev/null || echo 0
+}
+
+get_status() {
+  cat "$BATTERY/status" 2>/dev/null || echo "Unknown"
+}
+
+notify() {
+  notify-send -u "$1" -i "$2" -a "Power" \
+    -h string:x-canonical-private-synchronous:battery "$3" "$4"
+}
+
+play_sound() {
+  local sounds=(
+    "/usr/share/sounds/freedesktop/stereo/dialog-warning.oga"
+    "/usr/share/sounds/freedesktop/stereo/bell.oga"
+  )
+  for sound in "${sounds[@]}"; do
+    if [[ -f "$sound" ]]; then
+      pw-play "$sound" 2>/dev/null || paplay "$sound" 2>/dev/null &
+      return
+    fi
+  done
+}
+
+suspend_with_countdown() {
+  local percent="$1"
+  local countdown=30
+
+  while ((countdown > 0)); do
+    if [[ "$(get_status)" != "Discharging" ]]; then
+      notify "normal" "$ICON_CHARGING" "Suspend Cancelled" "Charger connected"
+      return
+    fi
+    notify "critical" "$ICON_DANGER" "Suspending in ${countdown}s" \
+      "Battery at ${percent}%. Plug in charger to cancel."
+    sleep 5
+    countdown=$((countdown - 5))
+  done
+
+  if [[ "$(get_status)" == "Discharging" ]]; then
+    notify "critical" "$ICON_DANGER" "Suspending Now" "Battery critically low"
+    sleep 1
+    systemctl suspend
+  fi
+}
+
+check_battery() {
+  local percent=$(get_percentage)
+  local status=$(get_status)
+
+  # Charger plug/unplug detection
+  if [[ -n "$last_status" && "$status" != "$last_status" ]]; then
+    if [[ "$last_status" == "Discharging" && "$status" != "Discharging" ]]; then
+      notify "low" "$ICON_CHARGING" "Charging" "Charger connected. Battery at ${percent}%."
+      notified_low=false
+      notified_critical=false
+      notified_full=false
+    elif [[ "$status" == "Discharging" && "$last_status" != "Discharging" ]]; then
+      notify "low" "$ICON_DISCHARGING" "On Battery" "Charger disconnected. Battery at ${percent}%."
+    fi
+  fi
+  last_status="$status"
+
+  if [[ "$status" == "Discharging" ]]; then
+    if ((percent <= DANGER)); then
+      play_sound
+      suspend_with_countdown "$percent"
+      return
+    fi
+
+    if ((percent <= CRITICAL)) && [[ "$notified_critical" == false ]]; then
+      play_sound
+      notify "critical" "$ICON_CRITICAL" "Battery Critical" "Battery at ${percent}%. Plug in now!"
+      notified_critical=true
+      notified_low=true
+      return
+    fi
+
+    if ((percent <= LOW)) && [[ "$notified_low" == false ]]; then
+      notify "normal" "$ICON_LOW" "Low Battery" "Battery at ${percent}%. Consider plugging in."
+      notified_low=true
+      return
+    fi
+
+  elif [[ "$status" == "Full" || ("$status" != "Discharging" && percent -ge FULL) ]]; then
+    if [[ "$notified_full" == false ]]; then
+      notify "low" "$ICON_FULL" "Battery Full" "You can unplug the charger."
+      notified_full=true
+    fi
+
+  elif [[ "$status" == "Charging" ]]; then
+    # Reset so notifications fire again if unplugged
+    ((percent > LOW)) && notified_low=false
+    ((percent > CRITICAL)) && notified_critical=false
+    notified_full=false
+  fi
+}
+
+monitor_battery() {
+  last_status=$(get_status)
+  check_battery
+  # Event-driven, not polling
+  upower --monitor-detail 2>/dev/null | while read -r line; do
+    check_battery
+  done
+}
+
+poll_battery() {
+  last_status=$(get_status)
+  while true; do
+    check_battery
+    sleep 60
+  done
+}
+
+if command -v upower &>/dev/null; then
+  monitor_battery
+else
+  poll_battery
+fi

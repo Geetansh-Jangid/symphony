@@ -100,3 +100,16 @@ window#waybar {
 #clock {
   font-weight: 700;
 }
+
+#battery.warning {
+  color: #e0af68;
+}
+
+#battery.critical {
+  color: @error;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.5; }
+}

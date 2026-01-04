@@ -50,7 +50,7 @@ packages=(
 	bluez bluez-utils blueman
 
 	# System
-	polkit-gnome brightnessctl ddcutil power-profiles-daemon
+	polkit-gnome brightnessctl ddcutil power-profiles-daemon upower
 	libnotify xdg-utils xdg-user-dirs inotify-tools
 	gnome-keyring libsecret
 
