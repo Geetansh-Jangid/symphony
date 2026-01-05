@@ -65,7 +65,7 @@ install_webapps() {
         --cursor-prefix="○ " \
         --selected-prefix="● " \
         --unselected-prefix="○ " \
-        --header "Space to select, Enter to confirm")
+        --header "Space to select, Enter to confirm") || true
     
     [[ -z "$selected" ]] && { echo "No apps selected."; return; }
     

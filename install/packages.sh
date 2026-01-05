@@ -56,7 +56,7 @@ packages=(
 	gnome-keyring libsecret
 
 	# Theming
-	matugen-bin nwg-look adw-gtk-theme bibata-cursor-theme-bin
+	matugen-bin nwg-look adw-gtk-theme bibata-cursor-theme-bin imagemagick
 
 	# Rofi Extras
 	rofimoji wtype
