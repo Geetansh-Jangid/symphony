@@ -253,13 +253,10 @@ Examples:
 
 FAQ:
   Spotify not themed?
-    Open Spotify for 60 sec, then run: spicetify backup apply
-
-  libEGL warning on install?
-    Harmless GPU driver warning, usually in VMs. Goes away after reboot.
-
-  Terminal looks broken during install?
-    Expected on fresh install. Reboot and run: symphony switch <theme>
+    Spicetify (Spotify theming tool) needs a one-time setup:
+      1. Open Spotify and keep it running for 60 seconds
+      2. Run: spicetify backup apply
+    After this, themes auto-apply on every switch.
 
 EOF
 	echo "  Found a problem? https://github.com/vyrx-dev/dotfiles/issues/new"
