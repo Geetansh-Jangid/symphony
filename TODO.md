@@ -27,6 +27,7 @@
 - [x] Spicetify theming
 - [x] Battery notification daemon
 - [x] Dynamic webapp installer (CDN icons, no bundled files)
+- [x] Fixed first-run script and startup file generation
 - [ ] README cleanup and compress showcase GIFs
 - [ ] Optimize theme switching performance
 - [ ] Full cleanup pass
