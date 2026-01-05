@@ -6,6 +6,11 @@
 
 step "Setting up services"
 
+# ── Bluetooth ──────────────────────────────────────────────────────────────────
+if pkg_installed bluez; then
+    sudo systemctl enable --now bluetooth &>/dev/null && ok "bluetooth" || warn "bluetooth failed"
+fi
+
 # ── Tray Applets ──────────────────────────────────────────────────────────────
 # Disable blueman/nm-applet (waybar handles these)
 for app in blueman nm-applet; do
