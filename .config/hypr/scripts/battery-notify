@@ -82,7 +82,7 @@ check_battery() {
       notify normal battery-caution "Low Battery" "Battery at ${percent}%. Consider plugging in."
       notified_low=true
     fi
-  elif [[ "$status" == "Full" ]] && ! $notified_full; then
+  elif [[ "$status" == "Full" || ($status != "Discharging" && $percent -ge 100) ]] && ! $notified_full; then
     notify low battery-full-charged "Battery Full" "You can unplug the charger."
     notified_full=true
   elif [[ "$status" == "Charging" ]]; then
