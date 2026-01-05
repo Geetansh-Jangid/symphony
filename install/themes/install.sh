@@ -26,7 +26,6 @@ if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" && "$SYMPHONY_FULLSCREEN" != "1" ]]; the
     if command -v alacritty &>/dev/null; then
         hyprctl dispatch exec -- alacritty --class Screensaver \
             --config-file "$DOTFILES/.config/alacritty/screensaver.toml" \
-            -o 'font.size=10' \
             -e "$SCRIPT_DIR/install.sh" "$@"
         exit 0
     fi

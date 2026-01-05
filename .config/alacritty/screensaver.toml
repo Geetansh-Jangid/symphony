@@ -1,11 +1,12 @@
 [colors.primary]
-background = "0x000000"
+background = "#000000"
+foreground = "#ffffff"
 
 [colors.cursor]
-cursor = "0x000000"
+cursor = "#ffffff"
 
 [font]
-size = 20.0
+size = 10.0
 
 [window]
 opacity = 1.0
