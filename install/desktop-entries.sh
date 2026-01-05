@@ -17,11 +17,7 @@ if [[ -L "$TARGET_DIR" ]]; then
 fi
 
 mkdir -p "$TARGET_DIR"
-
-# Copy icons folder for web apps
-if [[ -d "$APPS_DIR/icons" ]]; then
-    cp -r "$APPS_DIR/icons" "$TARGET_DIR/"
-fi
+mkdir -p "$TARGET_DIR/icons"
 
 # Browser overrides
 if command -v brave &>/dev/null && [[ -f "$APPS_DIR/brave-browser.desktop" ]]; then
@@ -42,32 +38,11 @@ if [[ -x "$DOTFILES/scripts/hide-apps" ]]; then
     fi
 fi
 
-# Web apps (optional) - only show capitalized names (our custom web apps)
+# Web apps (optional)
 if command -v gum &>/dev/null; then
-    webapps=()
-    for file in "$APPS_DIR"/*.desktop; do
-        [[ -f "$file" ]] || continue
-        name=$(basename "$file" .desktop)
-        # Skip browser overrides and system files (lowercase names)
-        case "$name" in 
-            brave-browser|chromium|grub-customizer) continue ;;
-        esac
-        # Only include capitalized names (web apps we created)
-        [[ "$name" =~ ^[A-Z] ]] && webapps+=("$name")
-    done
-
-    if [[ ${#webapps[@]} -gt 0 ]]; then
-        echo
-        if gum confirm "Install web apps?"; then
-            selected=$(printf '%s\n' "${webapps[@]}" | gum choose --no-limit --height 15) || true
-            for app in $selected; do
-                if [[ -n "$app" ]]; then
-                    # Replace hardcoded /home/vyrx with user's $HOME
-                    sed "s|/home/vyrx|$HOME|g" "$APPS_DIR/$app.desktop" > "$TARGET_DIR/$app.desktop"
-                    ok "$app"
-                fi
-            done
-        fi
+    echo
+    if gum confirm "Install web apps?"; then
+        source "$DOTFILES/install/webapps.sh"
     fi
 fi
 
