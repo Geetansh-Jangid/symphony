@@ -20,13 +20,22 @@ source "$DOTFILES/install/utils.sh"
 # │ Fullscreen Re-launch                                                  │
 # ╰───────────────────────────────────────────────────────────────────────╯
 
-# Re-launch in fullscreen terminal (screensaver.toml has opacity 1.0, no transparency issues)
+# Re-launch in fullscreen terminal with inline config (no external config dependency)
 if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" && "$SYMPHONY_FULLSCREEN" != "1" ]]; then
     export SYMPHONY_FULLSCREEN=1
     if command -v alacritty &>/dev/null; then
-        alacritty --class Screensaver \
-            --config-file "$DOTFILES/.config/alacritty/screensaver.toml" \
-            -e "$SCRIPT_DIR/install.sh" "$@" && exit 0
+        # Launch alacritty with inline config
+        alacritty --class SymphonyInstaller \
+            -o 'font.size=10' \
+            -o 'window.opacity=1.0' \
+            -o 'colors.primary.background="0x000000"' \
+            -e "$SCRIPT_DIR/install.sh" "$@" &
+        ALACRITTY_PID=$!
+        sleep 0.3
+        # Force fullscreen (works on fresh install without rules, harmless on existing)
+        hyprctl dispatch fullscreen 1 >/dev/null 2>&1 || true
+        wait $ALACRITTY_PID
+        exit 0
     fi
 fi
 
