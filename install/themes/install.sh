@@ -24,17 +24,12 @@ source "$DOTFILES/install/utils.sh"
 if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" && "$SYMPHONY_FULLSCREEN" != "1" ]]; then
     export SYMPHONY_FULLSCREEN=1
     if command -v alacritty &>/dev/null; then
-        # Launch alacritty with inline config (use Screensaver class for existing window rules)
-        alacritty --class Screensaver \
+        # Use hyprctl dispatch exec so Hyprland applies window rules before window appears
+        hyprctl dispatch exec -- alacritty --class Screensaver \
             -o 'font.size=10' \
             -o 'window.opacity=1.0' \
             -o 'colors.primary.background="0x000000"' \
-            -e "$SCRIPT_DIR/install.sh" "$@" &
-        ALACRITTY_PID=$!
-        sleep 0.3
-        # Force fullscreen (works on fresh install without rules, harmless on existing)
-        hyprctl dispatch fullscreen 1 >/dev/null 2>&1 || true
-        wait $ALACRITTY_PID
+            -e "$SCRIPT_DIR/install.sh" "$@"
         exit 0
     fi
 fi
