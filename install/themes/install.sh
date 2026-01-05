@@ -21,19 +21,14 @@ source "$DOTFILES/install/utils.sh"
 # ╰───────────────────────────────────────────────────────────────────────╯
 
 # Re-launch in fullscreen alacritty (only when run directly, not from main installer)
-# Use marker file since env vars don't propagate through hyprctl
-FULLSCREEN_MARKER="/tmp/symphony-installer-running"
-if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" && -z "$SYMPHONY_INSTALLING" && ! -f "$FULLSCREEN_MARKER" ]]; then
-    touch "$FULLSCREEN_MARKER"
+if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" && -z "$SYMPHONY_INSTALLING" && "$SYMPHONY_FULLSCREEN" != "1" ]]; then
+    export SYMPHONY_FULLSCREEN=1
     if command -v alacritty &>/dev/null; then
-        hyprctl dispatch exec -- \
-            alacritty --class Screensaver \
+        alacritty --class Screensaver \
             --config-file ~/.config/alacritty/screensaver.toml \
-            -e "$SCRIPT_DIR/install.sh"
-        exit 0
+            -e "$SCRIPT_DIR/install.sh" "$@" && exit 0
     fi
 fi
-rm -f "$FULLSCREEN_MARKER"
 
 # Colors - Symphony gradient
 C_GOLD="\033[38;2;255;235;59m"
