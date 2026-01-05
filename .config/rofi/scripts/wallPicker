@@ -31,6 +31,6 @@ for wp in "${wallpapers[@]}"; do
 	mkdir -p "$HOME/.config/symphony/current"
 	ln -sf "$wp" "$HOME/.config/symphony/current/wallpaper"
 
-	notify-send -i "$wp" "Wallpaper Changed" "$(basename "$wp")"
+	notify-send -i "$wp" "Wallpaper" "${wp##*/}"
 	break
 done

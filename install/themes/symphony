@@ -68,8 +68,15 @@ run_hooks() {
 
 set_wallpaper() {
 	local theme="$1"
+	
+	# Dynamic theme uses ~/Wallpapers with matugen
+	if [[ "$theme" == "dynamic" ]]; then
+		"$HOME/.config/hypr/scripts/change-theme"
+		return
+	fi
+	
 	local wall
-	wall=$(find "$THEMES_DIR/$theme/backgrounds" -type f \( -name "*.jpg" -o -name "*.png" -o -name "*.webp" \) 2>/dev/null | sort | head -1)
+	wall=$(find "$THEMES_DIR/$theme/backgrounds" -type f \( -name "*.jpg" -o -name "*.png" -o -name "*.webp" \) 2>/dev/null | sort -V | head -1)
 	[[ -z "$wall" ]] && return
 
 	swww query &>/dev/null || {
@@ -99,7 +106,7 @@ cmd_switch() {
 
 	[[ -z "$theme" ]] && exit 0
 	[[ "$theme" == "$(current_theme)" ]] && {
-		notify "Symphony" "Already using $theme"
+		notify "Already using $theme"
 		exit 0
 	}
 	theme_exists "$theme" || {
@@ -119,7 +126,10 @@ cmd_switch() {
 	hyprctl keyword misc:disable_autoreload 0 &>/dev/null || true
 	set_wallpaper "$theme"
 
-	notify "Symphony" "Applied: $theme" "$(readlink -f "$THEMES_DIR/$theme/wallpaper" 2>/dev/null)"
+	# Dynamic theme handles its own notification via change-theme script
+	if [[ "$theme" != "dynamic" ]]; then
+		notify "$theme" "" "$(readlink -f "$THEMES_DIR/$theme/wallpaper" 2>/dev/null)"
+	fi
 	ok "Switched to $theme"
 }
 

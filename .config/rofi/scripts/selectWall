@@ -3,7 +3,7 @@
 
 current_theme=$(cat ~/.config/symphony/.current-theme 2>/dev/null || echo "dynamic")
 if [[ "$current_theme" != "dynamic" ]]; then
-	notify-send "Theme Locked" "Using custom theme: $current_theme\nSwitch to Dynamic to use this"
+	notify-send "Theme Locked" "Switch to Dynamic first"
 	exit 0
 fi
 
@@ -49,7 +49,7 @@ for wp in "${wallpapers[@]}"; do
 			nautilus &>/dev/null &
 		)
 
-		notify-send -i "$wp" "Theme Applied" "$(basename "$wp")"
+		notify-send -i "$wp" "Dynamic" "Colors from wallpaper"
 		break
 	fi
 done
