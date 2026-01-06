@@ -6,7 +6,7 @@ foreground = "#ffffff"
 cursor = "#ffffff"
 
 [font]
-size = 10.0
+size = 18.0
 
 [window]
 opacity = 1.0
