@@ -70,7 +70,7 @@ EOF
     url=$(cut -f2 <<< "$sel")
     
     echo ""
-    "$SCRIPT_DIR/symphony-import" "$url" && echo -e "${C_OK}done${C_RESET}" || echo -e "${C_ERR}failed${C_RESET}"
+    "$SCRIPT_DIR/symphony-import/import.sh" "$url" && echo -e "${C_OK}done${C_RESET}" || echo -e "${C_ERR}failed${C_RESET}"
     sleep 2
 }
 
@@ -124,7 +124,7 @@ import_url() {
     [[ -z "$url" ]] && return
     echo ""
     
-    "$SCRIPT_DIR/symphony-import" "$url" && echo -e "${C_OK}done${C_RESET}" || echo -e "${C_ERR}failed${C_RESET}"
+    "$SCRIPT_DIR/symphony-import/import.sh" "$url" && echo -e "${C_OK}done${C_RESET}" || echo -e "${C_ERR}failed${C_RESET}"
     sleep 2
 }
 
