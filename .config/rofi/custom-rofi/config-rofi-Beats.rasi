@@ -3,7 +3,7 @@
 @import "~/.config/rofi/config.rasi"
 
 window {
-  width: 500px;
+  width: 600px;
 }
 
 mainbox {
@@ -23,7 +23,7 @@ entry {
 
 listview {
   columns: 2;
-  lines: 7;
+  lines: 8;
   spacing: 6px;
 }
 
