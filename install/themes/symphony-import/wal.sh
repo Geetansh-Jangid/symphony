@@ -3,6 +3,7 @@
 gen_wal() {
     cat > "$dest/.cache/wal/colors.json" <<EOF
 {
+    "_comment": "Symphony Generated - Omarchy $name",
     "wallpaper": "$dest/wallpaper",
     "alpha": "100",
     "special": {

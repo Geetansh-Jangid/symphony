@@ -2,6 +2,11 @@
 
 gen_starship() {
     cat > "$dest/.config/starship.toml" <<EOF
+## ╭─ ♪ Symphony ─╮
+## │  Generated   │
+## ╰──────────────╯
+## Theme: Omarchy $name
+
 "\$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = true
