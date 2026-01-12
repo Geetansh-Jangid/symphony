@@ -82,7 +82,7 @@ applications=(
 	 zen-browser-bin firefox chromium
 	obsidian bitwarden code visual-studio-code-bin
 	vesktop-bin discord keychain zed opencode
-	mpv yt-dlp steam lutris gamemode mangohud typora 
+	mpv yt-dlp steam lutris gamemode mangohud typora sddm-silent-theme
 )
 
 # ╭───────────────────────────────────────────────────────────────────────╮
