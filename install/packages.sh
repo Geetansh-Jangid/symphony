@@ -18,7 +18,7 @@ packages=(
 	qt5-wayland qt6-wayland uwsm
 
 	# Desktop
-	waybar rofi swaync swayosd swww wlogout
+	waybar rofi swaync swayosd swww wlogout brave-bin
 
 	# Terminal & Shell
 	kitty alacritty fish starship tmux
@@ -79,7 +79,7 @@ packages=(
 # ╰───────────────────────────────────────────────────────────────────────╯
 
 applications=(
-	brave-bin zen-browser-bin firefox chromium
+	 zen-browser-bin firefox chromium
 	obsidian bitwarden code visual-studio-code-bin
 	vesktop-bin discord keychain zed opencode
 	mpv yt-dlp steam lutris gamemode mangohud typora 
