@@ -1,7 +1,7 @@
 -- Syntax highlighting
 return {
   "nvim-treesitter/nvim-treesitter",
-  branch = "master",
+  branch = "main",
   build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile" },
   lazy = false,
