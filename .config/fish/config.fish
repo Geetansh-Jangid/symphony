@@ -7,6 +7,7 @@ set -g fish_greeting ""
 export EDITOR="nvim"
 export SUDO_EDITOR="$EDITOR"
 export VISUAL="nvim"
+export TERMINAL="kitty"
 
 export MANPAGER="nvim +Man!"
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'" # man using bat
@@ -23,3 +24,6 @@ starship init fish | source
 # User paths
 fish_add_path ~/.local/bin
 fish_add_path ~/.spicetify
+
+# Symphony
+set -gx PATH /home/vyrx/dotfiles/install/themes $PATH

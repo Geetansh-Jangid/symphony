@@ -1,5 +1,5 @@
 #!/bin/bash
-#|---/ /+---------------------+---/ /|#
+
 #|--/ /-| Symphony Dotfiles   |--/ /-|#
 #|-/ /--| User Services       |-/ /--|#
 #|/ /---+---------------------+/ /---|#
@@ -85,24 +85,24 @@ EOF
 fi
 
 # ── keyd ──────────────────────────────────────────────────────────────────────
-if pkg_installed keyd; then
-	echo
-	if gum confirm "Remap Caps Lock to act as Escape (tap) and Control (hold)?
-You will thank me later 😉" --default=false; then
-		sudo mkdir -p /etc/keyd
-		cat >"/etc/keyd/default.conf" <<'EOF'
-[ids]
-*
-
-[main]
-capslock = overload(control, esc)
-esc = capslock
-EOF
-
-		sudo systemctl enable --now keyd
-		sudo keyd reload && ok "keyd configured" || warn "keyd failed"
-	fi
-fi
+# if pkg_installed keyd; then
+# 	echo
+# 	if gum confirm "Remap Caps Lock to act as Escape (tap) and Control (hold)?
+# You will thank me later 😉" --default=false; then
+# 		sudo mkdir -p /etc/keyd
+# 		cat >"/etc/keyd/default.conf" <<'EOF'
+# [ids]
+# *
+#
+# [main]
+# capslock = overload(control, esc)
+# esc = capslock
+# EOF
+#
+# 		sudo systemctl enable --now keyd
+# 		sudo keyd reload && ok "keyd configured" || warn "keyd failed"
+# 	fi
+# fi
 
 # ── Git ───────────────────────────────────────────────────────────────────────────
 if pkg_installed -v git; then

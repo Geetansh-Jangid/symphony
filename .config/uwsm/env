@@ -3,15 +3,6 @@
 # ------ System Locale ------
 export LANG=en_US.UTF-8
 
-# ------ Qt Configuration ------
-# "wayland;xcb" allows Qt apps to try Wayland first, falling back to XWayland if needed.
-export QT_QPA_PLATFORM="wayland;xcb"
-
-# ------ GTK Configuration ------
-# Prioritize Wayland, fall back to X11.
-export GDK_BACKEND="wayland,x11"
-export QT_QUICK_CONTROLS_STYLE=Fusion
-
 # Fixes blank screens/rendering issues in tiling WMs (Java AWT).
 export _JAVA_AWT_WM_NONREPARENTING=1
 
