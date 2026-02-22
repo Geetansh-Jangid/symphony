@@ -164,3 +164,10 @@ step "Installing packages"
 setup_aur
 do_install "${packages[@]}"
 ask_applications
+
+# live-server is required by nvim's live preview plugin
+# runs non-interactively after npm is available — skips if it fails
+if command -v npm &>/dev/null; then
+    info "Installing live-server (required for nvim live preview)"
+    sudo npm install -g live-server &>/dev/null && ok "live-server" || warn "live-server install failed (non-fatal)"
+fi

@@ -124,6 +124,12 @@ done
 deploy_dir "$SYMPHONY_DIR/config" "$HOME/.config"
 deploy_files "$SYMPHONY_DIR/config" "$HOME/.config"  # standalone files like brave-flags.conf
 
+# tmux looks for ~/.tmux.conf, not ~/.config/tmux.conf
+if [[ -f "$SYMPHONY_DIR/config/tmux.conf" ]]; then
+    backup_file "$HOME/.tmux.conf"
+    cp -f "$SYMPHONY_DIR/config/tmux.conf" "$HOME/.tmux.conf"
+fi
+
 # Deploy local/share
 deploy_dir "$SYMPHONY_DIR/local/share" "$HOME/.local/share"
 
