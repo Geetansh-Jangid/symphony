@@ -36,7 +36,7 @@ WEBAPPS=(
 	"Chess|https://www.chess.com/|https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/chess.png"
 )
 
-WEBAPP_INSTALL="$HOME/.config/hypr/scripts/webapp-install"
+WEBAPP_INSTALL="$HOME/.local/bin/webapp-install"
 APPS_DIR="$HOME/.local/share/applications"
 
 # Check what's already installed

@@ -42,19 +42,23 @@
 - [x] SDDM setup (SilentSDDM integration in post-setup.sh)
 - [x] Fixed symphony-import to use flattened theme structure (no `.config/` nesting)
 - [x] Staged first-run flow (theme install → reboot → welcome notifications)
-- [ ] Neovim cleanup
+- [x] Neovim cleanup (replaced with workspace config)
+- [x] Single tmux.conf — replaced multi-file config/tmux/ with one file
+- [x] Consolidated all scripts into `bin/` (from hypr/rofi/waybar script dirs)
 - [ ] Symphony TUI — improve UX (wallpaper preview, more actions)
-- [ ] Theme template system — generate configs from `.tpl` + `colors.toml`
+- [x] Theme template system — generate configs from `.tpl` + `colors.toml`
 - [ ] README — compress showcase GIFs or convert to video links
+- [ ] QT theming (kvantum/qt5ct)
 
 ---
 
 ## Backlog
 
-- [ ] QT theming (kvantum/qt5ct)
+
 - [ ] Media conversion scripts
 - [ ] Symphony website
 
+
 ---
 
-_Last updated: February 14, 2026_
+_Last updated: February 22, 2026_

@@ -5,7 +5,7 @@
 #   left/prev  = previous wallpaper
 #   right/next = next wallpaper
 
-source "$HOME/.config/rofi/scripts/thumbcache"
+source "$HOME/.local/bin/thumbcache"
 
 THEME=$(cat "$HOME/.config/symphony/.current-theme" 2>/dev/null || echo "dynamic")
 WALLDIR="$HOME/symphony/themes/$THEME/backgrounds"

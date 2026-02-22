@@ -42,18 +42,18 @@
   "custom/logo": {
     "format": "󰎈",
     "on-click": "kitty --title symphony-tui -e ~/symphony/install/themes/symphony-tui",
-    "on-click-right": "~/.config/rofi/scripts/rofibeats",
+    "on-click-right": "~/.local/bin/rofibeats",
     "tooltip": false
   },
   "custom/screenrecording-indicator": {
-    "on-click": "~/.config/hypr/scripts/screenrecord",
-    "exec": "~/.config/waybar/scripts/indicator-record",
+    "on-click": "~/.local/bin/screenrecord",
+    "exec": "~/.local/bin/indicator-record",
     "signal": 8,
     "return-type": "json"
   },
   "custom/idle-indicator": {
-    "on-click": "~/.config/hypr/scripts/toggle-idle",
-    "exec": "~/.config/waybar/scripts/indicator-idle",
+    "on-click": "~/.local/bin/toggle-idle",
+    "exec": "~/.local/bin/indicator-idle",
     "signal": 9,
     "return-type": "json"
   },
@@ -85,8 +85,8 @@
       "󰃠"
     ],
     "scroll-step": 10,
-    "on-click": "~/.config/waybar/scripts/wall-picker",
-    "on-click-right": "~/.config/waybar/scripts/random-wall"
+    "on-click": "~/.local/bin/wall-picker",
+    "on-click-right": "~/.local/bin/random-wall"
   },
   "disk": {
     "interval": 30,
@@ -133,7 +133,7 @@
     "format-discharging": "{icon} {capacity}%",
     "format-charging": "{icon}",
     "format-plugged": "",
-    "on-click": "~/.config/rofi/scripts/power-profiles",
+    "on-click": "~/.local/bin/power-profiles",
     "format-icons": {
       "charging": [
         "󰢜",

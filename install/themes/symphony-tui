@@ -147,7 +147,7 @@ omarchy_menu() {
 # │ Web Apps                                                              │
 # ╰───────────────────────────────────────────────────────────────────────╯
 
-WEBAPP_DIR="$SYMPHONY_DIR/.config/hypr/scripts"
+WEBAPP_DIR="$SYMPHONY_DIR/bin"
 
 webapp_menu() {
     clear

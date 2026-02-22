@@ -71,7 +71,7 @@ set_wallpaper() {
 	
 	# Dynamic theme uses ~/Wallpapers with matugen
 	if [[ "$theme" == "dynamic" ]]; then
-		"$HOME/.config/hypr/scripts/change-theme"
+		"$HOME/.local/bin/change-theme"
 		return
 	fi
 	
@@ -115,7 +115,7 @@ cmd_switch() {
 
 	if [[ -z "$theme" ]]; then
 		command -v rofi &>/dev/null || { err "rofi is required"; exit 1; }
-		local theme_picker="$HOME/.config/rofi/scripts/themePicker"
+		local theme_picker="$HOME/.local/bin/themePicker"
 		if [[ -x "$theme_picker" ]]; then
 			exec "$theme_picker"
 		else

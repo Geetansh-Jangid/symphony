@@ -34,7 +34,7 @@ get_thumb() {
 }
 
 # CLI: clear cache
-# Usage: ~/.config/rofi/scripts/thumbcache clear
+# Usage: thumbcache clear
 # Run this if thumbnails look wrong after changing wallpapers or preview.png
 [[ "$1" == "clear" ]] && {
     rm -rf "$THUMB_DIR"/*

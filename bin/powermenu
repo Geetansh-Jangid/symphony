@@ -1,6 +1,6 @@
 #!/bin/bash
 
-scrDir="$HOME/.config/hypr/scripts"
+scrDir="$HOME/.local/bin"
 
 options="Shutdown\nReboot\nSuspend\nLogout"
 
