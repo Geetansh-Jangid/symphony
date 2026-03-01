@@ -12,12 +12,12 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SYMPHONY_DIR="${SYMPHONY_DIR:-$HOME/symphony}"
-THEMES_DIR="$SYMPHONY_DIR/themes"
+SYMPHONY_REPO="${SYMPHONY_REPO:-$HOME/symphony}"
+THEMES_DIR="$SYMPHONY_REPO/themes"
 HOOKS_DIR="$SCRIPT_DIR/hooks"
-SYMPHONY_DIR="$HOME/.config/symphony"
-CURRENT_LINK="$SYMPHONY_DIR/current"
-THEME_FILE="$SYMPHONY_DIR/.current-theme"
+SYMPHONY_CONFIG="$HOME/.config/symphony"
+CURRENT_LINK="$SYMPHONY_CONFIG/current"
+THEME_FILE="$SYMPHONY_CONFIG/.current-theme"
 
 VERSION="3.0.0"
 
@@ -136,7 +136,7 @@ cmd_switch() {
 	info "Switching to $theme..."
 	hyprctl keyword misc:disable_autoreload 1 &>/dev/null || true
 
-	mkdir -p "$SYMPHONY_DIR"
+	mkdir -p "$SYMPHONY_CONFIG"
 	echo "$theme" > "$THEME_FILE"
 	ln -sfn "$THEMES_DIR/$theme" "$CURRENT_LINK"
 
@@ -160,7 +160,7 @@ cmd_reload() {
 	theme=$(current_theme)
 	info "Reloading $theme..."
 
-	mkdir -p "$SYMPHONY_DIR"
+	mkdir -p "$SYMPHONY_CONFIG"
 	ln -sfn "$THEMES_DIR/$theme" "$CURRENT_LINK"
 
 	hyprctl keyword misc:disable_autoreload 1 &>/dev/null || true
@@ -211,7 +211,7 @@ cmd_fix() {
 	info "Fixing symlinks..."
 	theme_exists "$theme" || { err "Theme '$theme' not found"; exit 1; }
 
-	mkdir -p "$SYMPHONY_DIR"
+	mkdir -p "$SYMPHONY_CONFIG"
 	ln -sfn "$THEMES_DIR/$theme" "$CURRENT_LINK"
 	run_hooks
 	ok "Fixed $theme"
@@ -234,15 +234,15 @@ cmd_update() {
 	ok "Backed up to $backup"
 
 	# Pull latest
-	if ! git -C "$SYMPHONY_DIR" pull --ff-only; then
+	if ! git -C "$SYMPHONY_REPO" pull --ff-only; then
 		err "Git pull failed — resolve conflicts manually"
 		exit 1
 	fi
 	ok "Pulled latest changes"
 
 	# Redeploy configs
-	if [[ -f "$SYMPHONY_DIR/install/deploy.sh" ]]; then
-		source "$SYMPHONY_DIR/install/deploy.sh"
+	if [[ -f "$SYMPHONY_REPO/install/deploy.sh" ]]; then
+		source "$SYMPHONY_REPO/install/deploy.sh"
 		ok "Configs redeployed"
 	fi
 
@@ -311,13 +311,13 @@ cmd_fresh_setup() {
 
 	# Nuke and reclone
 	local repo
-	repo=$(git -C "$SYMPHONY_DIR" remote get-url origin 2>/dev/null || echo "https://github.com/vyrx-dev/symphony.git")
-	rm -rf "${SYMPHONY_DIR:?}"
-	git clone "$repo" "$SYMPHONY_DIR"
+	repo=$(git -C "$SYMPHONY_REPO" remote get-url origin 2>/dev/null || echo "https://github.com/vyrx-dev/symphony.git")
+	rm -rf "${SYMPHONY_REPO:?}"
+	git clone "$repo" "$SYMPHONY_REPO"
 	ok "Re-cloned from $repo"
 
 	# Re-install
-	cd "$SYMPHONY_DIR"
+	cd "$SYMPHONY_REPO"
 	source ./install.sh
 }
 
@@ -420,7 +420,7 @@ case "${1:-help}" in
 	fresh-setup)     cmd_fresh_setup ;;
 	fix)             cmd_fix ;;
 	list|ls)         cmd_list ;;
-	current)         echo ""; echo -e "  ${GREEN}●${RESET} $(current_theme)"; "$SYMPHONY_DIR/bin/fetch-colors" 2>/dev/null || true ;;
+	current)         echo ""; echo -e "  ${GREEN}●${RESET} $(current_theme)"; "$HOME/.local/bin/fetch-colors" 2>/dev/null || true ;;
 	remove|rm)       shift; cmd_remove "$@" ;;
 	uninstall)       "$SCRIPT_DIR/uninstall.sh" ;;
 	help|-h|--help)  cmd_help ;;

@@ -64,9 +64,18 @@ rm -f ~/.local/state/symphony/first-run-done
 # Optional post-install setup
 source "$SYMPHONY_DIR/install/post-setup.sh"
 
-# Done
+# Reboot prompt
 echo
 ok "Installation complete"
-info "Log out and back in — themes will be set up on first login"
-info "Run 'symphony help' to get started"
 echo
+info "A reboot is required to finalize the setup."
+info "Themes will be configured automatically when you first log in."
+echo
+
+if confirm "Reboot now?"; then
+	ok "Rebooting..."
+	sleep 2
+	sudo reboot
+else
+	warn "Reboot skipped. Please restart manually to complete setup."
+fi

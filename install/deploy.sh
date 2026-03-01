@@ -34,13 +34,19 @@ should_ignore() {
     return 1
 }
 
+files_differ() {
+    local src="$1" dst="$2"
+    [[ ! -e "$dst" ]] && return 1
+    [[ -L "$dst" ]] && return 0
+    diff -rq "$src" "$dst" &>/dev/null && return 1 || return 0
+}
+
 backup_file() {
     local src="$1"
     local rel="${src#$HOME/}"
-    # Only backup real files, not our own symlinks
+    # Only backup real files/dirs that differ from what we're deploying
     if [[ -e "$src" && ! -L "$src" ]]; then
         mkdir -p "$(dirname "$BACKUP_DIR/$rel")"
-
         cp -a "$src" "$BACKUP_DIR/$rel"
     fi
 }
@@ -60,8 +66,8 @@ deploy_dir() {
         local name="$(basename "$item")"
         local dst="$dst_base/$name"
 
-        # Backup existing
-        if [[ -d "$dst" && ! -L "$dst" ]]; then
+        # Backup existing only if it differs from source
+        if [[ -d "$dst" && ! -L "$dst" ]] && files_differ "$item" "$dst"; then
             backup_file "$dst"
         fi
 
@@ -82,7 +88,10 @@ deploy_files() {
         local name="$(basename "$item")"
         local dst="$dst_base/$name"
 
-        backup_file "$dst"
+        # Backup existing file only if it differs
+        if [[ -f "$dst" && ! -L "$dst" ]] && ! diff -q "$item" "$dst" &>/dev/null; then
+            backup_file "$dst"
+        fi
         cp -f "$item" "$dst"
     done
 }
@@ -123,12 +132,6 @@ done
 # Deploy config
 deploy_dir "$SYMPHONY_DIR/config" "$HOME/.config"
 deploy_files "$SYMPHONY_DIR/config" "$HOME/.config"  # standalone files like brave-flags.conf
-
-# tmux looks for ~/.tmux.conf, not ~/.config/tmux.conf
-if [[ -f "$SYMPHONY_DIR/config/tmux.conf" ]]; then
-    backup_file "$HOME/.tmux.conf"
-    cp -f "$SYMPHONY_DIR/config/tmux.conf" "$HOME/.tmux.conf"
-fi
 
 # Deploy local/share
 deploy_dir "$SYMPHONY_DIR/local/share" "$HOME/.local/share"
