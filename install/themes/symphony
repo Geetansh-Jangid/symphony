@@ -263,7 +263,7 @@ cmd_restore() {
 
 	local selected
 	if command -v gum &>/dev/null; then
-		selected=$(printf '%s\n' "${backups[@]##*/}" | sed 's|/$||' | gum choose --header "Select backup to restore:") || exit 0
+		selected=$(printf '%s\n' "${backups[@]}" | xargs -n1 basename | gum choose --header "Select backup to restore:") || exit 0
 		selected="$backup_base/$selected"
 	else
 		echo "Available backups:"
