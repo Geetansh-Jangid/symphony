@@ -49,7 +49,7 @@ install_paru() {
 	info "Installing paru..."
 	
 	# Install build dependencies
-	sudo pacman -S --needed --noconfirm base-devel git rust
+	sudo pacman -S --needed --noconfirm base-devel git
 	
 	local tmp=$(mktemp -d)
 	trap "rm -rf '$tmp'" EXIT
