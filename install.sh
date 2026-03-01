@@ -6,6 +6,11 @@
 
 set -e
 
+# Handle unknown terminal types (SSH from modern terminals)
+if [[ -n "$TERM" ]] && ! tput longname &>/dev/null; then
+	export TERM=xterm-256color
+fi
+
 SYMPHONY_DIR="$(cd "$(dirname "$0")" && pwd)"
 source "$SYMPHONY_DIR/install/utils.sh"
 
