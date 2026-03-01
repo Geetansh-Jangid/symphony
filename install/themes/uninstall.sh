@@ -13,25 +13,6 @@ source "$SYMPHONY_ROOT/install/utils.sh"
 THEMES_DIR="$SYMPHONY_ROOT/themes"
 SYMPHONY_DIR="$HOME/.config/symphony"
 
-# ╭───────────────────────────────────────────────────────────────────────╮
-# │ Functions                                                             │
-# ╰───────────────────────────────────────────────────────────────────────╯
-
-show_menu() {
-    clear
-    echo
-    show_banner
-    echo
-    warn "Theme Uninstaller"
-    echo
-    echo "  1) Delete specific themes"
-    echo "  2) Complete removal"
-    echo "  3) Cancel"
-    echo
-    read -rp "  Select: " choice
-    echo "$choice"
-}
-
 delete_themes() {
     local themes=()
 
@@ -41,24 +22,9 @@ delete_themes() {
 
     [[ ${#themes[@]} -eq 0 ]] && { info "No themes found"; return 0; }
 
-    local selected=""
-    if [[ $HAS_GUM -eq 1 ]]; then
-        info "Space to select, Enter to confirm"
-        selected=$(printf '%s\n' "${themes[@]}" | gum choose --no-limit) || return 0
-    else
-        echo
-        info "Available themes:"
-        for i in "${!themes[@]}"; do
-            echo "    $((i+1))) ${themes[$i]}"
-        done
-        echo
-        read -rp "  Enter numbers (space-separated): " nums
-
-        for num in $nums; do
-            local idx=$((num-1))
-            [[ $idx -ge 0 && $idx -lt ${#themes[@]} ]] && selected+="${themes[$idx]}"$'\n'
-        done
-    fi
+    info "Space to select, Enter to confirm"
+    local selected
+    selected=$(printf '%s\n' "${themes[@]}" | gum choose --no-limit) || return 0
 
     [[ -z "$selected" ]] && { info "Nothing selected"; return 0; }
 
@@ -67,7 +33,7 @@ delete_themes() {
     echo "$selected" | while read -r t; do [[ -n "$t" ]] && echo "    $t"; done
     echo
 
-    confirm "Continue?" || return 0
+    gum confirm "Continue?" || return 0
 
     while IFS= read -r theme; do
         [[ -z "$theme" ]] && continue
@@ -88,7 +54,7 @@ nuke_everything() {
     echo "    - Pywal cache symlink"
     echo
     
-    confirm "Continue?" || return 0
+    gum confirm "Continue?" || return 0
     
     echo
     read -rp "  Type 'yes' to confirm: " answer
@@ -110,13 +76,21 @@ nuke_everything() {
     return 0
 }
 
-# ╭───────────────────────────────────────────────────────────────────────╮
-# │ Main                                                                  │
-# ╰───────────────────────────────────────────────────────────────────────╯
+# Main
+clear
+echo
+show_banner
+echo
+warn "Theme Uninstaller"
+echo
+echo "  1) Delete specific themes"
+echo "  2) Complete removal"
+echo "  3) Cancel"
+echo
 
-choice=$(show_menu)
+read -rp "  Select: " choice
 
-case $choice in
+case "$choice" in
     1) delete_themes ;;
     2) nuke_everything ;;
     3) info "Cancelled" ;;
