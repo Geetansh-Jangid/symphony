@@ -71,7 +71,7 @@ deploy_dir() {
             backup_file "$dst"
         fi
 
-        # Remove old symlinks (from stow migration)
+        # Remove existing symlink
         [[ -L "$dst" ]] && rm "$dst"
 
         # Copy recursively
@@ -121,12 +121,11 @@ step "Deploying configs"
 mkdir -p "$HOME/.config" "$HOME/.local/share" "$HOME/.local/bin"
 mkdir -p "$HOME/Pictures/Screenshots" "$HOME/Wallpapers"
 
-# Clean stale stow symlinks from older installs
+# Remove stale symlinks before deploying
 for f in "$HOME"/.config/*; do
     [[ -L "$f" ]] || continue
     local_target="$(readlink "$f" 2>/dev/null)"
-    # Remove symlinks pointing into old dotfiles (stow artifacts)
-    [[ "$local_target" == *symphony* ]] && rm "$f" && info "Removed stow symlink: $(basename "$f")"
+    [[ "$local_target" == *symphony* ]] && rm "$f"
 done
 
 # Deploy config

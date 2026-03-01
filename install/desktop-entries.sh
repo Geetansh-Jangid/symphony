@@ -11,10 +11,9 @@ TARGET_DIR="$HOME/.local/share/applications"
 
 step "Setting up desktop entries"
 
-# Remove stale symlink from stow (migration cleanup)
+# Remove stale symlink if present
 if [[ -L "$TARGET_DIR" ]]; then
     rm "$TARGET_DIR"
-    info "Removed stale symlink (stow migration)"
 fi
 
 mkdir -p "$TARGET_DIR"

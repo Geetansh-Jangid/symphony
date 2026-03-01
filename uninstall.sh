@@ -69,7 +69,7 @@ restore_backups() {
         latest=$(ls -d "$backup_base"/*/ 2>/dev/null | sort -V | tail -1)
     fi
 
-    # Fall back to old stow-era backups
+    # Fall back to legacy backup location
     if [[ -z "$latest" ]]; then
         latest=$(ls -d "$HOME"/symphony-backup* 2>/dev/null | sort -V | tail -1)
     fi
