@@ -1,11 +1,10 @@
 <div align="center">
 
-![Banner](assets/banner.jpg)
+![Banner](branding/banner.jpg)
 
 **A minimal, productivity-focused Arch + Hyprland setup**
 
 <a href="#install"><img src="https://img.shields.io/badge/Install-c4a7e7?style=for-the-badge&logoColor=1a1b26" alt="Install"/></a>&ensp;
-<a href="#themes"><img src="https://img.shields.io/badge/Themes-f5a97f?style=for-the-badge&logoColor=1a1b26" alt="Themes"/></a>&ensp;
 <a href="#keybindings"><img src="https://img.shields.io/badge/Keys-9ece6a?style=for-the-badge&logoColor=1a1b26" alt="Keys"/></a>
 
 </div>
@@ -24,53 +23,10 @@ https://github.com/user-attachments/assets/8f59ff8d-90ab-4a0c-a2d6-9346307f5de1
 
 ---
 
-<a id="themes"></a>
-
-## Themes
-
-11 dark themes, one dynamic. `symphony switch` changes everything — terminal, bar, launcher, notifications, lock screen, discord, spotify.
-
-<table>
-<tr>
-<td align="center"><img src="assets/void.png" width="400"/><br><b>Void</b></td>
-<td align="center"><img src="assets/sakura.png" width="400"/><br><b>Sakura</b></td>
-</tr>
-<tr>
-<td align="center"><img src="assets/espresso.png" width="400"/><br><b>Espresso</b></td>
-<td align="center"><img src="assets/rose-pine.png" width="400"/><br><b>Rosé Pine</b></td>
-</tr>
-<tr>
-<td align="center"><img src="assets/gruvbox-material.png" width="400"/><br><b>Gruvbox Material</b></td>
-<td align="center"><img src="assets/tokyo-night.png" width="400"/><br><b>Tokyo Night</b></td>
-</tr>
-<tr>
-<td align="center"><img src="assets/kanagawa.png" width="400"/><br><b>Kanagawa</b></td>
-<td align="center"><img src="assets/nordic.png" width="400"/><br><b>Nordic</b></td>
-</tr>
-<tr>
-<td align="center"><img src="assets/forest.png" width="400"/><br><b>Forest</b></td>
-<td align="center"><img src="assets/zen.png" width="400"/><br><b>Zen</b></td>
-</tr>
-</table>
-
-<div align="center">
-
-### Dynamic Theme
-
-![Dynamic Theme](assets/dynamic.gif)
-
-*Colors generated from wallpaper using Matugen*
-
-</div>
-
----
-
-<a id="install"></a>
-
 ## Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/vyrx-dev/symphony/main/boot.sh | bash
+curl -fsSL https://raw.githubusercontent.com/vyrx-dev/symphony/symphony-3.0/boot.sh | bash
 ```
 
 `boot.sh` installs git and gum if needed, clones the repo, and runs the installer. Run it again anytime to update.
@@ -78,7 +34,7 @@ curl -fsSL https://raw.githubusercontent.com/vyrx-dev/symphony/main/boot.sh | ba
 Manual install:
 
 ```bash
-git clone https://github.com/vyrx-dev/symphony ~/symphony
+git clone -b symphony-3.0 https://github.com/vyrx-dev/symphony ~/symphony
 cd ~/symphony && ./install.sh
 ```
 
@@ -103,8 +59,6 @@ symphony help            # show all commands
 Theme picker GUI: `Super + Ctrl + Shift + Space`
 
 ---
-
-<a id="keybindings"></a>
 
 ## Keybindings
 
@@ -218,16 +172,14 @@ Learned (and borrowed) from:
 - [uiriansan/SilentSDDM](https://github.com/uiriansan/SilentSDDM)
 - [bjarneo/aether.nvim](https://github.com/bjarneo/aether.nvim)
 
-Wallpapers: [vyrx-dev/wallpapers](https://github.com/vyrx-dev/wallpapers)
-
 ---
 
 <a href="https://www.star-history.com/#vyrx-dev/symphony&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=vyrx-dev/symphony&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=vyrx-dev/symphony&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=vyrx-dev/symphony&type=date&legend=top-left" />
- </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=vyrx-dev/symphony&type=date&theme=dark&legend=top-left" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=vyrx-dev/symphony&type=date&legend=top-left" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=vyrx-dev/symphony&type=date&legend=top-left" />
+  </picture>
 </a>
 <div align="center">
 
