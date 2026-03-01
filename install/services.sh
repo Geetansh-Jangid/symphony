@@ -44,8 +44,8 @@ if pkg_installed mpd; then
 	mkdir -p ~/.config/systemd/user/mpd.service.d
 	echo -e "[Service]\nRuntimeDirectory=mpd" >~/.config/systemd/user/mpd.service.d/override.conf
 	systemctl --user daemon-reload
-	systemctl --user enable --now mpd && ok "mpd" || warn "mpd failed"
-    systemctl --user enable --now mpd-mpris
+	systemctl --user enable --now mpd --quiet && ok "mpd" || warn "mpd failed"
+    systemctl --user enable --now mpd-mpris --quiet
 fi
 
 # ── mpdscribble ───────────────────────────────────────────────────────────────
@@ -54,7 +54,7 @@ if pkg_installed mpdscribble; then
 	if grep -q "YOUR_USERNAME" ~/.config/mpdscribble/mpdscribble.conf 2>/dev/null; then
 		warn "mpdscribble: Edit ~/.config/mpdscribble/mpdscribble.conf with your Last.fm credentials"
 	else
-		systemctl --user enable --now mpdscribble && ok "mpdscribble" || warn "mpdscribble failed"
+		systemctl --user enable --now mpdscribble --quiet && ok "mpdscribble" || warn "mpdscribble failed"
 	fi
 fi
 

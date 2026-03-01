@@ -12,7 +12,7 @@ packages=(
 	hyprland hypridle hyprlock hyprpicker hyprsunset
 	xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
 	qt5-wayland qt6-wayland uwsm
-	waybar rofi swaync swayosd swww wlogout brave-bin
+	waybar rofi swaync swayosd swww brave-bin
 	kitty alacritty fish starship tmux
 	eza bat fd ripgrep fzf zoxide jq
 	yazi nautilus 
@@ -82,7 +82,7 @@ do_install() {
 			ok "$pkg"
 		elif pacman -Si "$pkg" &>/dev/null; then
 			official+=("$pkg")
-		elif paru -Si "$pkg" &>/dev/null 2>&1; then
+		elif paru -Ssq "^$pkg$" &>/dev/null; then
 			aur+=("$pkg")
 		else
 			warn "$pkg not found"
@@ -112,7 +112,7 @@ ask_applications() {
 	[[ -z "$selected" ]] && return 0
 
 	step "Installing applications"
-	do_install "$selected"
+	do_install $selected
 }
 
 step "Installing packages"

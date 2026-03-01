@@ -52,9 +52,10 @@ source "$SYMPHONY_DIR/install/desktop-entries.sh"
 # Enable user services
 source "$SYMPHONY_DIR/install/services.sh"
 
-# Choose default shell
-echo
-"$SYMPHONY_DIR/bin/choose-shell"
+# Set fish as default shell
+if command -v fish &>/dev/null; then
+    sudo chsh -s "$(command -v fish)" "$USER" && ok "Shell set to fish" || warn "Failed to set shell"
+fi
 
 # Clear first-run markers (fresh installs should go through all stages)
 rm -f ~/.local/state/symphony/themes-installed
