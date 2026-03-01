@@ -4,9 +4,6 @@
 #|-/ /--| Web Apps Installer  |-/ /--|#
 #|/ /---+---------------------+/ /---|#
 
-SYMPHONY_DIR="${SYMPHONY_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
-source "$SYMPHONY_DIR/install/utils.sh"
-
 # Predefined webapps: "Name|URL|Icon"
 # Icons from https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/
 WEBAPPS=(
@@ -51,8 +48,10 @@ is_installed() {
 install_webapps() {
 	# Build selection list with install status
 	local options=()
+	local names=()
 	for entry in "${WEBAPPS[@]}"; do
 		IFS='|' read -r name url icon <<<"$entry"
+		names+=("$name")
 		if is_installed "$name"; then
 			options+=("$name (installed)")
 		else
@@ -60,8 +59,7 @@ install_webapps() {
 		fi
 	done
 
-	echo
-	step "Select web apps to install"
+	echo -e "\n\033[1mSelect web apps to install:\033[0m\n"
 
 	selected=$(printf '%s\n' "${options[@]}" | gum choose --no-limit \
 		--cursor="› " \
@@ -71,11 +69,9 @@ install_webapps() {
 		--header "Space to select, Enter to confirm") || true
 
 	[[ -z "$selected" ]] && {
-		info "No apps selected"
+		echo "No apps selected."
 		return
 	}
-
-	step "Installing web apps"
 
 	while IFS= read -r choice; do
 		name="${choice% (installed)}"
@@ -84,19 +80,18 @@ install_webapps() {
 			IFS='|' read -r n url icon <<<"$entry"
 			if [[ "$n" == "$name" ]]; then
 				if is_installed "$name"; then
-					ok "$name (already installed)"
+					echo -e "\033[33m○\033[0m $name (already installed)"
 				else
 					"$WEBAPP_INSTALL" "$name" "$url" "$icon" &&
-						ok "$name" ||
-						warn "$name failed"
+						echo -e "\033[32m✓\033[0m $name" ||
+						echo -e "\033[31m✗\033[0m $name (failed)"
 				fi
 				break
 			fi
 		done
 	done <<<"$selected"
 
-	echo
-	info "Apps available in launcher (Super + Space)"
+	echo -e "\nDone! Apps available in launcher (Super + Space)"
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && install_webapps
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && install_webapps || true
