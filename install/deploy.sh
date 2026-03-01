@@ -138,11 +138,25 @@ deploy_dir "$SYMPHONY_DIR/local/share" "$HOME/.local/share"
 # Deploy scripts
 deploy_scripts
 
-# Ensure default theme is linked for first boot
+# Deploy themes to ~/.config/symphony/themes/
 SYMPHONY_CONFIG="$HOME/.config/symphony"
-if [[ ! -L "$SYMPHONY_CONFIG/current" && -d "$SYMPHONY_CONFIG/themes/sakura" ]]; then
-    ln -sfn "$SYMPHONY_CONFIG/themes/sakura" "$SYMPHONY_CONFIG/current"
-    echo "$SYMPHONY_CONFIG/themes/sakura" > "$SYMPHONY_CONFIG/.current-theme"
+mkdir -p "$SYMPHONY_CONFIG/themes"
+for theme_dir in "$SYMPHONY_DIR"/themes/*/; do
+    [[ -d "$theme_dir" ]] || continue
+    theme_name=$(basename "$theme_dir")
+    # Only copy if not already there (preserves user modifications)
+    [[ -d "$SYMPHONY_CONFIG/themes/$theme_name" ]] || cp -r "$theme_dir" "$SYMPHONY_CONFIG/themes/"
+done
+
+# Link default theme if none active
+if [[ ! -L "$SYMPHONY_CONFIG/current" ]]; then
+    if [[ -d "$SYMPHONY_CONFIG/themes/sakura" ]]; then
+        ln -sfn "$SYMPHONY_CONFIG/themes/sakura" "$SYMPHONY_CONFIG/current"
+        echo "sakura" > "$SYMPHONY_CONFIG/.current-theme"
+    elif [[ -d "$SYMPHONY_CONFIG/themes/nordic" ]]; then
+        ln -sfn "$SYMPHONY_CONFIG/themes/nordic" "$SYMPHONY_CONFIG/current"
+        echo "nordic" > "$SYMPHONY_CONFIG/.current-theme"
+    fi
 fi
 
 ok "Dotfiles deployed"
