@@ -98,7 +98,7 @@ do_install() {
 	if [[ ${#aur[@]} -gt 0 ]]; then
 		echo
 		info "Installing ${#aur[@]} AUR packages..."
-		yes | paru --skipreview --needed -S "${aur[@]}" 2>/dev/null || paru --skipreview --needed -S "${aur[@]}"
+		paru --skipreview --needed --noconfirm -S "${aur[@]}" 2>/dev/null || true
 	fi
 }
 
