@@ -48,14 +48,13 @@ install_paru() {
 	
 	info "Installing paru..."
 	
-	# Disable debug packages to avoid debugedit dependency
-	mkdir -p ~/.config/pacman
-	echo 'OPTIONS=(strip docs !libtool !staticlibs emptydirs zipman purge !debug !lto)' > ~/.config/pacman/makepkg.conf
+	# Install build dependencies
+	sudo pacman -S --needed --noconfirm base-devel git rust
 	
 	local tmp=$(mktemp -d)
 	trap "rm -rf '$tmp'" EXIT
 	
-	git clone https://aur.archlinux.org/paru-bin.git "$tmp/paru" --depth 1 || {
+	git clone https://aur.archlinux.org/paru.git "$tmp/paru" --depth 1 || {
 		err "Failed to clone paru"
 		trap - EXIT
 		return 1
