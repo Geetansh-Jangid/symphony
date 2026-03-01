@@ -7,7 +7,7 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SYMPHONY_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")"
+SYMPHONY_DIR="${SYMPHONY_REPO:-$(dirname "$(dirname "$SCRIPT_DIR")")}"
 THEMES_DIR="$SYMPHONY_DIR/themes"
 SYMPHONY_CONFIG="$HOME/.config/symphony"
 BRANDING="$SYMPHONY_DIR/branding"
