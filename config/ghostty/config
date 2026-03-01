@@ -1,5 +1,5 @@
 # Colors from Symphony
-config-file = ?"~/.config/symphony/current/.config/ghostty/theme"
+config-file = ?"~/.config/symphony/current/ghostty/theme"
 
 # Font
 font-family = "JetBrainsMono Nerd Font"

@@ -1,5 +1,5 @@
 # Colors from Symphony
-general.import = ["~/.config/symphony/current/.config/alacritty/colors.toml"]
+general.import = ["~/.config/symphony/current/alacritty/colors.toml"]
 
 [env]
 TERM = "xterm-256color"
