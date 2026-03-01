@@ -4,6 +4,9 @@
 #|-/ /--| Web Apps Installer  |-/ /--|#
 #|/ /---+---------------------+/ /---|#
 
+SYMPHONY_DIR="${SYMPHONY_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+source "$SYMPHONY_DIR/install/utils.sh"
+
 # Predefined webapps: "Name|URL|Icon"
 # Icons from https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/
 WEBAPPS=(
