@@ -1,7 +1,7 @@
 #!/bin/bash
 
 STATE_DIR="$HOME/.local/state/symphony"
-SYMPHONY_DIR="${SYMPHONY_DIR:-$HOME/symphony}"
+SYMPHONY_REPO="${SYMPHONY_REPO:-$HOME/symphony}"
 
 mkdir -p "$STATE_DIR"
 
@@ -9,13 +9,13 @@ mkdir -p "$STATE_DIR"
 if [[ ! -f "$STATE_DIR/themes-installed" ]]; then
     sleep 2
 
-    if [[ -f "$SYMPHONY_DIR/install/themes/install.sh" ]]; then
-        kitty --hold -e bash -c "SYMPHONY_INSTALLING=1 '$SYMPHONY_DIR/install/themes/install.sh'" &
+    if [[ -f "$SYMPHONY_REPO/install/themes/install.sh" ]]; then
+        kitty --hold -e bash -c "SYMPHONY_INSTALLING=1 SYMPHONY_REPO='$SYMPHONY_REPO' '$SYMPHONY_REPO/install/themes/install.sh'" &
         wait $!
     fi
 
     # Apply default theme
-    "$SYMPHONY_DIR/install/themes/symphony" switch sakura
+    "$SYMPHONY_REPO/install/themes/symphony" switch sakura
 
     touch "$STATE_DIR/themes-installed"
     notify-send "Symphony" "Themes installed! Reboot to finish setup."

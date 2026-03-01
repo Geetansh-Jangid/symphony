@@ -57,9 +57,8 @@ if command -v fish &>/dev/null; then
     sudo chsh -s "$(command -v fish)" "$USER" && ok "Shell set to fish" || warn "Failed to set shell"
 fi
 
-# Clear first-run markers (fresh installs should go through all stages)
-rm -f ~/.local/state/symphony/themes-installed
-rm -f ~/.local/state/symphony/first-run-done
+# Note: first-run markers are preserved to prevent double theme install
+# The theme installer will run once on first Hyprland login
 
 # Optional post-install setup
 source "$SYMPHONY_DIR/install/post-setup.sh"
