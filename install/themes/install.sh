@@ -13,6 +13,7 @@ SYMPHONY_CONFIG="$HOME/.config/symphony"
 BRANDING="$SYMPHONY_DIR/branding"
 LOGO_FILE="$BRANDING/symphony.txt"
 MUSICAL_FILE="$BRANDING/musical.txt"
+STATE_DIR="$HOME/.local/state/symphony"
 
 source "$SYMPHONY_DIR/install/utils.sh"
 
@@ -160,7 +161,7 @@ page_one() {
     heading "Tuning the Instruments"
     
     local missing=()
-    for dep in hyprctl swww; do
+    for dep in hyprctl awww; do
         if command -v "$dep" &>/dev/null; then
             check_mark "$dep"
         else
@@ -410,3 +411,6 @@ main() {
 }
 
 main
+touch "$STATE_DIR/themes-installed"
+notify-send "Symphony" "Theme setup complete! Enjoy your desktop."
+exit 0

@@ -3,7 +3,7 @@
 #|--/ /-| Symphony Dotfiles   |--/ /-|#
 #|-/ /--| Package Installer   |-/ /--|#
 #|/ /---+---------------------+/ /---|#
-
+set -e
 SYMPHONY_DIR="${SYMPHONY_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 [[ -z "$RESET" ]] && source "$SYMPHONY_DIR/install/utils.sh"
 
@@ -12,7 +12,7 @@ packages=(
 	hyprland hypridle hyprlock hyprpicker hyprsunset
 	xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
 	qt5-wayland qt6-wayland uwsm
-	waybar rofi swaync swayosd swww brave-bin
+	waybar rofi swaync swayosd awww brave-bin
 	kitty alacritty fish starship tmux
 	eza bat fd ripgrep fzf zoxide jq
 	yazi nautilus 
@@ -22,7 +22,7 @@ packages=(
 	pipewire pipewire-alsa pipewire-pulse wireplumber
 	pamixer wiremix
 	mpd mpc rmpc cava playerctl mpdscribble
-	spotify-launcher spicetify-cli mpd-mpris
+	spotify-launcher mpd-mpris spicetify-cli-git
 	networkmanager nmgui-bin kdeconnect
 	bluez bluez-utils blueman
 	polkit-gnome brightnessctl ddcutil power-profiles-daemon upower
