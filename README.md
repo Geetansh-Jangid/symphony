@@ -156,8 +156,8 @@ curl -fsSL https://raw.githubusercontent.com/vyrx-dev/dotfiles/main/boot.sh | ba
 Or manually:
 
 ```bash
-git clone https://github.com/vyrx-dev/dotfiles ~/dotfiles
-cd ~/dotfiles && ./install.sh
+git clone https://github.com/vyrx-dev/symphony ~/symphony
+cd ~/symphony && ./install.sh
 ```
 
 ### Themes Only
